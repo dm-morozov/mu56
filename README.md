@@ -2,12 +2,12 @@
 
 ## 📊 Статус проекта
 
-[![React + TypeScript Build](https://github.com/dm-morozov/netology_71_react-higher-order-component/actions/workflows/web.yaml/badge.svg)](https://github.com/dm-morozov/netology_71_react-higher-order-component/actions/workflows/web.yaml)
+[![React + TypeScript Build](https://github.com/dm-morozov/mu56/actions/workflows/web.yaml/badge.svg)](https://github.com/dm-morozov/mu56/actions/workflows/web.yaml)
 ![Netology](https://img.shields.io/badge/React-TypeScript-blue)
 
 ---
 
-[Посетить сайт проекта!](https://dm-morozov.github.io/netology_71_react-higher-order-component/)
+[Посетить сайт проекта!](https://dm-morozov.github.io/mu56/)
 
 ---
 
