@@ -29,8 +29,14 @@ const YardIcon = () => (
   </svg>
 )
 
-const ArrowDown = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+const ArrowDown: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    viewBox="0 0 24 24"
+    width="18"
+    height="18"
+    fill="currentColor"
+    {...props}
+  >
     <path d="M7 10l5 5 5-5z" />
   </svg>
 )
