@@ -1,6 +1,47 @@
 // src/components/ProgramAccordion.tsx
 import { useState } from 'react'
 
+// === SVG ИКОНКИ ===
+const HomeIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20">
+    <path
+      d="M3 13h2l-1 7h16l-1-7h2L12 5l-9 8zm5-2v7h8v-7l-4-3.5L8 11z"
+      fill="currentColor"
+    />
+  </svg>
+)
+
+const SchoolIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20">
+    <path
+      d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"
+      fill="currentColor"
+    />
+  </svg>
+)
+
+const YardIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20">
+    <path
+      d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 16H4V8h16v12z"
+      fill="currentColor"
+    />
+  </svg>
+)
+
+const ArrowDown = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+    <path d="M7 10l5 5 5-5z" />
+  </svg>
+)
+
+const CheckIcon = () => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+  </svg>
+)
+
+// === ДАННЫЕ ПРОГРАММ ===
 type Program = {
   title: string
   duration: string
@@ -8,6 +49,7 @@ type Program = {
   items: { name: string; price: string }[]
   total?: string
   description: string[]
+  icon: React.FC
 }
 
 const programs: { [key: string]: Program[] } = {
@@ -17,6 +59,7 @@ const programs: { [key: string]: Program[] } = {
       duration: '≈ 15 минут',
       price: '3 500 ₽',
       items: [],
+      total: undefined,
       description: [
         'Приветствие от Деда Мороза и Снегурочки',
         'Игра "Елочка, гори!"',
@@ -24,12 +67,14 @@ const programs: { [key: string]: Program[] } = {
         'Вручение подарков и фото',
         'Прощание с пожеланиями',
       ],
+      icon: HomeIcon,
     },
     {
       title: 'Новогодняя программа',
       duration: '≈ 30 минут',
       price: '4 500 ₽',
       items: [],
+      total: undefined,
       description: [
         'Яркое приветствие и знакомство',
         'Игра "Да / Нет"',
@@ -39,12 +84,14 @@ const programs: { [key: string]: Program[] } = {
         'Загадки и "Заморожу"',
         'Вручение подарков',
       ],
+      icon: HomeIcon,
     },
     {
       title: 'Новогодняя сказка',
       duration: '≈ 60 минут',
       price: '6 000 ₽',
       items: [],
+      total: undefined,
       description: [
         'Театрализованное приветствие',
         'Игра "Елочка гори!" + "Да / Нет"',
@@ -57,6 +104,7 @@ const programs: { [key: string]: Program[] } = {
         'Собери снеговика',
         'Стихотворения, подарки, фото',
       ],
+      icon: HomeIcon,
     },
   ],
   class: [
@@ -70,11 +118,12 @@ const programs: { [key: string]: Program[] } = {
       ],
       total: '10 000 ₽',
       description: [
-        'Полная новогодняя программа с Дедом Морозом и Снегурочкой',
+        'Полная новогодняя программа',
         'Активные игры, хоровод, танцы, загадки',
         'Вручение подарков и общее фото',
         'Мощный звук на всё мероприятие',
       ],
+      icon: SchoolIcon,
     },
     {
       title: 'С азотным шоу',
@@ -92,6 +141,7 @@ const programs: { [key: string]: Program[] } = {
         'Дети готовят мороженое',
         'Яркий финал с туманом',
       ],
+      icon: SchoolIcon,
     },
   ],
   yard: [
@@ -105,11 +155,12 @@ const programs: { [key: string]: Program[] } = {
       ],
       total: '8 000 ₽',
       description: [
-        'Уличная программа с Дедом Морозом',
+        'Уличная программа',
         'Игры на свежем воздухе',
         'Хоровод, снежки, фото',
         'Звук на всю площадку',
       ],
+      icon: YardIcon,
     },
     {
       title: 'Массовый (от 15 детей)',
@@ -121,81 +172,81 @@ const programs: { [key: string]: Program[] } = {
         { name: '≈ 60 минут', price: '10 000 ₽' },
         { name: 'Колонка JBL + микрофоны', price: 'включено' },
       ],
+      total: undefined,
       description: [
         'Масштабный уличный праздник',
         'Активные игры для большой группы',
         'Хороводы, конкурсы, флешмобы',
         'Звук на всю площадку',
       ],
+      icon: YardIcon,
     },
   ],
 }
 
-type Props = { type: 'home' | 'class' | 'yard' }
+// === КОМПОНЕНТ ===
+type Props = { type: 'home' | 'class' | 'yard'; subtitle: string }
 
-export default function ProgramAccordion({ type }: Props) {
+export default function ProgramAccordion({ type, subtitle }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
-  const data = programs[type]
+
+  // Защита от ошибки
+  const data = programs[type] || []
 
   return (
-    <div className="accordion">
-      {data.map((prog, i) => (
-        <div key={i} className="accordion-item">
-          {/* === ВСЕГДА ВИДНО === */}
-          <div className="program-card">
-            <div className="program-header">
-              <h3 className="program-title">{prog.title}</h3>
-              <p className="program-duration">{prog.duration}</p>
+    <>
+      <p className="section-subtitle">{subtitle}</p>
+      <div className="accordion">
+        {data.map((prog, i) => (
+          <div key={i} className="accordion-item">
+            <div
+              className="program-card"
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+            >
+              <div className="program-header">
+                <div className="program-title">
+                  <prog.icon />
+                  {prog.title}
+                </div>
+                <div className="program-price">{prog.price}</div>
+              </div>
+              <div className="program-duration">{prog.duration}</div>
+
+              {prog.items.length > 0 && (
+                <div className="program-items">
+                  {prog.items.map((item, idx) => (
+                    <div key={idx} className="program-item">
+                      <span className="item-name">{item.name}</span>
+                      <span className="item-price">{item.price}</span>
+                    </div>
+                  ))}
+                  {prog.total && (
+                    <div className="program-total">Итого: {prog.total}</div>
+                  )}
+                </div>
+              )}
+
+              <button className="toggle-button">
+                {openIndex === i ? 'Скрыть' : 'Подробности'}
+                <ArrowDown className={openIndex === i ? 'rotated' : ''} />
+              </button>
             </div>
 
-            {prog.items.length > 0 && (
-              <div className="program-items">
-                {prog.items.map((item, idx) => (
-                  <div key={idx} className="program-item">
-                    <span className="item-name">{item.name}</span>
-                    <span className="item-price">{item.price}</span>
-                  </div>
-                ))}
-                {prog.total && (
-                  <div className="program-total">Итого: {prog.total}</div>
-                )}
+            {openIndex === i && (
+              <div className="accordion-content">
+                <ul>
+                  {prog.description.map((d, idx) => (
+                    <li key={idx}>
+                      <CheckIcon />
+                      {d}
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
-
-            {/* === КНОПКА ОТКРЫТИЯ === */}
-            <button
-              className="toggle-button"
-              onClick={(e) => {
-                e.stopPropagation()
-                setOpenIndex(openIndex === i ? null : i)
-              }}
-            >
-              Подробности
-              <svg
-                className={`arrow ${openIndex === i ? 'rotated' : ''}`}
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path d="M6 9l6 6 6-6" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </button>
           </div>
-
-          {/* === ТОЛЬКО ОПИСАНИЕ В АККОРДЕОНЕ === */}
-          {openIndex === i && (
-            <div className="accordion-content">
-              <ul>
-                {prog.description.map((d, idx) => (
-                  <li key={idx}>{d}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   )
 }

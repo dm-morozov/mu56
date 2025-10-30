@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import PriceSection from './components/PriceSection'
 import BookletSection from './components/BookletSection'
 import Footer from './components/Footer'
+import Gallery from './components/Gallery'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
 
       <Hero />
       <PriceSection />
+      <Gallery />
       <BookletSection />
 
       <p className="note">
