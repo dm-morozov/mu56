@@ -13,8 +13,8 @@ function App() {
       <Header />
       <main className="container">
         <Hero />
-        <PriceSection />
         <Gallery />
+        <PriceSection />
         <BookletSection />
         <p className="note">
           * Цены действительны в пределах города.

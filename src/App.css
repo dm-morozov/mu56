@@ -45,7 +45,7 @@ body {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  min-height: 480px; /* Базовое значение */
+  min-height: 380px; /* Было 480px */
   pointer-events: none;
 }
 
@@ -82,18 +82,25 @@ body {
 
 /* === КОНТЕНТ ХЕДЕРА (внутри .container) === */
 .header-enhanced {
-  position: relative; /* 👈 Убедимся, что он позиционирован в потоке */
+  position: relative;
   padding: 1.5rem 0 2rem;
-  margin-top: -480px; /* 👈 ГЛАВНОЕ ИСПРАВЛЕНИЕ: Поднимаем блок контента вверх на высоту фона */
+  margin-top: -380px;
+  min-height: 380px;
   margin-bottom: 0;
-  min-height: 480px; /* 👈 Устанавливаем ту же высоту, что и у .header-full-bg */
   text-align: center;
   z-index: 5;
 }
 
 .header-content {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Это центрирует элементы друг относительно друга по вертикали */
+  justify-content: center;
+  gap: 25px;
   z-index: 2;
+  /* 💡 ДОБАВЛЯЕМ ВЕРХНИЙ ОТСТУП, ЧТОБЫ ОПУСТИТЬ БЛОК НИЖЕ ЦЕНТРА */
+  margin-top: 100px; /* Вы можете настроить это значение (например, 20px, 40px и т.д.) */
 }
 
 .header-text {
@@ -108,6 +115,13 @@ body {
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.6rem;
   line-height: 1.3;
+}
+
+.header-text .logoTitle {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 800; /* Очень жирное начертание */
+  font-size: 3rem; /* Крупный размер для десктопа */
+  line-height: 1.1;
 }
 
 .header-text p {
@@ -236,7 +250,7 @@ body {
 }
 
 .program-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--primary);
   font-weight: 600;
   display: flex;
@@ -275,15 +289,10 @@ body {
   justify-content: space-between;
   font-size: 0.95rem;
   padding: 0.4rem 0;
-  border-bottom: 1px dashed #eee;
 }
 
-.program-item:last-child {
-  border-bottom: none;
-}
-
-.item-name {
-  color: var(--gray-600);
+.program-item + .program-item {
+  border-top: 1px dashed #eee;
 }
 
 .item-price {
@@ -348,7 +357,7 @@ body {
   padding-left: 1.6rem;
   font-size: 0.95rem;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.5rem;
 }
 
@@ -487,6 +496,53 @@ body {
   color: white;
   font-size: 1rem;
   font-weight: 500;
+}
+
+/* === СТИЛИ ДЛЯ ГАЛЕРЕИ ВНУТРИ АККОРДЕОНА (ProgramGallery) === */
+
+.program-gallery-wrapper {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.program-gallery-wrapper h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.program-gallery-grid {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto; /* На случай, если будет много фото */
+  padding-bottom: 5px; /* Для скроллбара */
+}
+
+.program-gallery-item {
+  flex-shrink: 0;
+  width: 100px; /* Размер превью */
+  height: 75px;
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.program-gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.program-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* === АДАПТИВ === */
@@ -691,17 +747,17 @@ footer a:hover {
   }
 
   .header-full-bg {
-    min-height: 520px;
+    min-height: 420px; /* Было 520px */
   }
 
   .header-enhanced {
     padding-top: 2rem;
-    margin-top: -520px; /* 👈 СИНХРОНИЗАЦИЯ */
-    min-height: 520px; /* 👈 СИНХРОНИЗАЦИЯ */
+    margin-top: -420px; /* СИНХРОНИЗАЦИЯ */
+    min-height: 420px; /* СИНХРОНИЗАЦИЯ */
   }
 
   .header-text h1 {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
   }
 
   .header-text p {
@@ -729,13 +785,12 @@ footer a:hover {
   }
 
   .header-full-bg {
-    min-height: 380px;
+    min-height: 300px;
   }
 
   .header-enhanced {
-    /* 👈 ДОБАВЛЕНО */
-    margin-top: -380px; /* 👈 СИНХРОНИЗАЦИЯ */
-    min-height: 380px; /* 👈 СИНХРОНИЗАЦИЯ */
+    margin-top: -300px;
+    min-height: 300px;
   }
 
   .header-text h1 {
@@ -748,5 +803,18 @@ footer a:hover {
 
   .logo {
     max-height: 70px;
+  }
+
+  .header-content {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 75px;
+    padding: 0 40px;
+    align-items: center;
+    gap: 0;
+  }
+
+  .header-text .logoTitle {
+    font-size: 2.3rem; /* Немного увеличим H1 и здесь */
   }
 }
