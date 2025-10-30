@@ -47,8 +47,10 @@ const STATIC_PARALLAX_POSITIONS = {
 
 export default function Header() {
   const [mousePercent, setMousePercent] = useState({ x: 0.5, y: 0.5 })
-  const requestRef = useRef<number>()
-  const previousTimeRef = useRef<number>()
+  // ИЗМЕНЕНИЕ 1: Добавляем | null к типу и устанавливаем начальное значение null
+  const requestRef = useRef<number | null>(null)
+  // ИЗМЕНЕНИЕ 2: Добавляем | null к типу и устанавливаем начальное значение null
+  const previousTimeRef = useRef<number | null>(null)
   const headerRef = useRef<HTMLDivElement>(null)
 
   // Плавное обновление позиции мыши
@@ -96,7 +98,7 @@ export default function Header() {
     goldenBalls,
     pinkBalls,
     subtractsBig,
-    subtractsMedium,
+    // subtractsMedium,
     subtractsSmall,
   } = parallaxPositions
 
