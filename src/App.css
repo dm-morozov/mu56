@@ -1,4 +1,16 @@
-/* src/App.css — ФИНАЛЬНЫЙ, МОБИЛЬНЫЙ, С ИКОНКАМИ */
+/* src/App.css */
+
+@font-face {
+  font-family: 'Bubblegum Sans';
+  src: url('BubblegumSans-Regular.eot');
+  src: local('BubblegumSans-Regular'),
+    url('BubblegumSans-Regular.eot?#iefix') format('embedded-opentype'),
+    url('BubblegumSans-Regular.woff') format('woff'),
+    url('BubblegumSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --primary: #6c5ce7;
   --accent: #00b894;
@@ -107,21 +119,15 @@ body {
   margin: 1.2rem 0 1.8rem;
 }
 
-.header-text h1 {
+.header-text .logoTitle {
   font-family: 'Comfortaa', cursive;
-  font-size: 1.75rem;
-  background: linear-gradient(135deg, #6c5ce7, #00b894);
+  font-size: 3rem; /* Крупный размер для десктопа */
+  /* ВСТАВЬТЕ СЮДА ВАШ ВЫБОР: #1f4068, #161e27 ИЛИ #005aa7, #331780 */
+  background: linear-gradient(135deg, #1f4068, #161e27);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.6rem;
   line-height: 1.3;
-}
-
-.header-text .logoTitle {
-  font-family: 'Comfortaa', cursive;
-  font-weight: 800; /* Очень жирное начертание */
-  font-size: 3rem; /* Крупный размер для десктопа */
-  line-height: 1.1;
 }
 
 .header-text p {
@@ -173,6 +179,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.6rem;
+  margin-top: 20px;
 }
 
 .hero-text p {
@@ -710,12 +717,24 @@ footer a:hover {
   .container {
     padding: 1.5rem;
   }
+
+  .hero {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 1.5rem 0 3rem;
+    gap: 4rem;
+  }
+
   .hero-text h2 {
     font-size: 2rem;
+    margin-top: 0;
   }
   .photo-frame {
-    width: 180px;
-    height: 180px;
+    width: 300px;
+    height: 300px;
   }
   .section-title {
     font-size: 1.8rem;

@@ -7,7 +7,7 @@ import blueBallBlurred from '../assets/header/blue-ball_blurred.png'
 import goldenBall from '../assets/header/golden-ball.png'
 import pinkBall from '../assets/header/pink-ball.png'
 import subtractBig from '../assets/header/Subtract_big.png'
-import subtractMedium from '../assets/header/Subtract_medium.png'
+// import subtractMedium from '../assets/header/Subtract_medium.png'
 import subtractSmall from '../assets/header/Subtract_small.png'
 import clouds from '../assets/header/clouds.svg'
 
