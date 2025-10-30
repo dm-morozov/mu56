@@ -445,6 +445,10 @@ body {
 
 .booklet-content {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .booklet-text {
@@ -452,6 +456,7 @@ body {
   margin: 1rem 0;
   font-size: 1rem;
   line-height: 1.6;
+  max-width: 90%;
 }
 
 .booklet-button {
@@ -464,22 +469,40 @@ body {
   text-decoration: none;
   box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
   transition: var(--transition);
+  margin-top: 0.5rem;
 }
 
 .booklet-button:hover {
   transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
 }
 
+/* === НАКЛОННАЯ КАРТИНКА === */
 .booklet-preview {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
 }
 
-.booklet-preview iframe {
+.booklet-tilt {
+  transform: rotateY(-12deg) rotateX(8deg);
+  transform-style: preserve-3d;
+  transition: var(--transition);
+  max-width: 320px;
   width: 100%;
-  height: 400px;
-  border: none;
+}
+
+.booklet-tilt:hover {
+  transform: rotateY(-8deg) rotateX(4deg) translateY(-6px);
+}
+
+.booklet-image {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  display: block;
 }
 
 /* === ПРИМЕЧАНИЕ === */
@@ -552,8 +575,35 @@ footer a:hover {
   }
   .booklet-section {
     grid-template-columns: 1fr 1fr;
+    padding: 2.5rem;
   }
-  .booklet-preview iframe {
-    height: 500px;
+
+  .booklet-content {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .booklet-text {
+    font-size: 1.05rem;
+    max-width: 100%;
+  }
+
+  .booklet-tilt {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .booklet-tilt {
+    transform: rotateY(-10deg) rotateX(6deg);
+    max-width: 260px;
+  }
+
+  .booklet-tilt:hover {
+    transform: rotateY(-8deg) rotateX(4deg) translateY(-4px);
+  }
+
+  .booklet-image {
+    border-radius: 14px;
   }
 }

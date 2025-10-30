@@ -1,5 +1,6 @@
 // src/components/BookletSection.tsx
-import booklet from '../assets/booklet.pdf'
+import bookletPdf from '../assets/booklet.pdf'
+import bookletPreview from '../assets/preview_booklet.jpg'
 
 export default function BookletSection() {
   return (
@@ -12,21 +13,22 @@ export default function BookletSection() {
           сценарий!
         </p>
         <a
-          href={booklet}
+          href={bookletPdf}
           download="Мир_Улыбок_Буклет.pdf"
           className="booklet-button"
         >
           Скачать буклет (PDF)
         </a>
       </div>
+
       <div className="booklet-preview">
-        <iframe
-          src={booklet}
-          title="Буклет Мир Улыбок"
-          width="100%"
-          height="500"
-          style={{ border: 'none', borderRadius: '16px' }}
-        />
+        <div className="booklet-tilt">
+          <img
+            src={bookletPreview}
+            alt="Буклет Мир Улыбок — превью"
+            className="booklet-image"
+          />
+        </div>
       </div>
     </section>
   )
