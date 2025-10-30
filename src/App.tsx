@@ -1,6 +1,6 @@
-// src/App.tsx
+// src/App.tsx — УБРАЛИ .container ИЗ-ЗА ХЕДЕРА
 import './App.css'
-import logo from './assets/mu_logo.svg'
+import Header from './components/Header'
 import Hero from './components/Hero'
 import PriceSection from './components/PriceSection'
 import BookletSection from './components/BookletSection'
@@ -9,24 +9,21 @@ import Gallery from './components/Gallery'
 
 function App() {
   return (
-    <div className="container">
-      <header className="header">
-        <img src={logo} alt="Мир Улыбок — Детские праздники" className="logo" />
-      </header>
-
-      <Hero />
-      <PriceSection />
-      <Gallery />
-      <BookletSection />
-
-      <p className="note">
-        * Цены действительны в пределах города.
-        <br />
-        Выезд в удалённый район — ~ 500 ₽ (договорная).
-      </p>
-
+    <>
+      <Header />
+      <main className="container">
+        <Hero />
+        <PriceSection />
+        <Gallery />
+        <BookletSection />
+        <p className="note">
+          * Цены действительны в пределах города.
+          <br />
+          Выезд в удалённый район — ~ 500 ₽ (договорная).
+        </p>
+      </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

@@ -20,6 +20,8 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
   color: var(--gray-900);
@@ -34,11 +36,87 @@ body {
   padding: 1rem;
 }
 
-/* === ХЕДЕР === */
-.header {
+/* === ПОЛНОЭКРАННЫЙ ФОН ХЕДЕРА === */
+.header-full-bg {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  min-height: 480px; /* Базовое значение */
+  pointer-events: none;
+}
+
+.header-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #87ceeb 0%, #98fb98 100%);
+  opacity: 0.92;
+  z-index: 0;
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.header-clouds-full {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* === КОНТЕНТ ХЕДЕРА (внутри .container) === */
+.header-enhanced {
+  position: relative; /* 👈 Убедимся, что он позиционирован в потоке */
+  padding: 1.5rem 0 2rem;
+  margin-top: -480px; /* 👈 ГЛАВНОЕ ИСПРАВЛЕНИЕ: Поднимаем блок контента вверх на высоту фона */
+  margin-bottom: 0;
+  min-height: 480px; /* 👈 Устанавливаем ту же высоту, что и у .header-full-bg */
   text-align: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem 0;
+  z-index: 5;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.header-text {
+  margin: 1.2rem 0 1.8rem;
+}
+
+.header-text h1 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.75rem;
+  background: linear-gradient(135deg, #6c5ce7, #00b894);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.header-text p {
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.6;
+  max-width: 92%;
+  margin: 0 auto;
+  font-weight: 500;
 }
 
 .logo {
@@ -551,6 +629,26 @@ footer a:hover {
   }
 }
 
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .header-enhanced {
+    min-height: 350px;
+  }
+
+  .header-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .header-text p {
+    font-size: 0.95rem;
+  }
+
+  .parallax-element {
+    will-change: transform;
+    /* Больше ничего — transition убран */
+  }
+}
+
 /* === АДАПТИВ === */
 @media (min-width: 768px) {
   .container {
@@ -591,6 +689,29 @@ footer a:hover {
   .booklet-tilt {
     max-width: 380px;
   }
+
+  .header-full-bg {
+    min-height: 520px;
+  }
+
+  .header-enhanced {
+    padding-top: 2rem;
+    margin-top: -520px; /* 👈 СИНХРОНИЗАЦИЯ */
+    min-height: 520px; /* 👈 СИНХРОНИЗАЦИЯ */
+  }
+
+  .header-text h1 {
+    font-size: 2.3rem;
+  }
+
+  .header-text p {
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
+
+  .logo {
+    max-height: 90px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -605,5 +726,27 @@ footer a:hover {
 
   .booklet-image {
     border-radius: 14px;
+  }
+
+  .header-full-bg {
+    min-height: 380px;
+  }
+
+  .header-enhanced {
+    /* 👈 ДОБАВЛЕНО */
+    margin-top: -380px; /* 👈 СИНХРОНИЗАЦИЯ */
+    min-height: 380px; /* 👈 СИНХРОНИЗАЦИЯ */
+  }
+
+  .header-text h1 {
+    font-size: 1.55rem;
+  }
+
+  .header-text p {
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    max-height: 70px;
   }
 }

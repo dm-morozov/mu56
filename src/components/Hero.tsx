@@ -9,10 +9,14 @@ export default function Hero() {
       </div>
       <div className="hero-text">
         <h2>
-          Добро пожаловать в<br />
-          Мир Улыбок!
+          Позвоните <br />
+          Дедушке Морозу!
         </h2>
-        <p>Создаём незабываемые новогодние праздники для ваших детей</p>
+        <p>
+          Создаём незабываемые
+          <br />
+          новогодние праздники для детей более 17 лет
+        </p>
         <button
           className="cta-button"
           onClick={() => (window.location.href = 'tel:+79033922229')}
