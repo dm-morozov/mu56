@@ -206,7 +206,7 @@ body {
   font-family: 'Comfortaa', cursive;
   font-size: 1.8rem;
   background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.6rem;
   margin-top: 20px;
