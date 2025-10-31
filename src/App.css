@@ -51,7 +51,7 @@ body {
 /* === ПОЛНОЭКРАННЫЙ ФОН ХЕДЕРА === */
 .header-full-bg {
   position: relative;
-  width: 100vw;
+  width: 100%;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
@@ -834,6 +834,6 @@ footer a:hover {
   }
 
   .header-text .logoTitle {
-    font-size: 2.3rem; /* Немного увеличим H1 и здесь */
+    font-size: 2rem;
   }
 }
