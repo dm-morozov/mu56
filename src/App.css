@@ -680,6 +680,37 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* === ФИЛЬТР-ТАБЫ === */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 0.8rem 1.5rem;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-900);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-tab:hover {
+  background: var(--gray-200);
+}
+
+.filter-tab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
 /* === АНИМАЦИЯ === */
 @keyframes slideDown {
   from {
@@ -835,5 +866,14 @@ footer a:hover {
 
   .header-text .logoTitle {
     font-size: 2rem;
+  }
+
+  .filter-tabs {
+    gap: 0.5rem;
+  }
+
+  .filter-tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 }
