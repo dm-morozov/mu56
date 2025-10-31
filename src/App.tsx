@@ -7,8 +7,64 @@ import Footer from './components/Footer'
 import Gallery from './components/Gallery'
 import CallToAction from './components/CallToAction'
 import { Helmet } from 'react-helmet'
+import { useEffect } from 'react'
 
 function App() {
+  useEffect(() => {
+    const header = document.querySelector('.header-full-bg')
+    if (!header) return
+
+    const container = document.createElement('div')
+    container.className = 'snowflakes-header'
+    header.appendChild(container)
+
+    const snowflakeIcons = ['❄', '❅', '❆', '✻', '✼', '❉'] // Разные формы
+    const snowflakeColors = ['#ffffff', '#e0f7ff', '#b3e5ff', '#87cefa'] // Белый + голубые
+
+    const createSnowflake = () => {
+      const flake = document.createElement('div')
+      flake.className = 'snowflake'
+
+      // Случайная иконка
+      flake.innerHTML =
+        snowflakeIcons[Math.floor(Math.random() * snowflakeIcons.length)]
+
+      // Случайный цвет
+      flake.style.color =
+        snowflakeColors[Math.floor(Math.random() * snowflakeColors.length)]
+
+      // Позиция
+      flake.style.left = `${Math.random() * 100}%`
+
+      // Скорость: 6–12 сек
+      flake.style.animationDuration = `${Math.random() * 6 + 6}s`
+
+      // Прозрачность
+      flake.style.opacity = (Math.random() * 0.4 + 0.6).toFixed(2)
+
+      // Размер
+      const size = Math.random() * 0.9 + 0.7
+      flake.style.fontSize = `${size}em`
+
+      container.appendChild(flake)
+
+      // Удаление после анимации
+      const duration = parseFloat(flake.style.animationDuration) * 1000 + 1000
+      setTimeout(() => flake.remove(), duration)
+    }
+
+    // Частое появление: каждые 300–700 мс
+    const interval = setInterval(createSnowflake, Math.random() * 400 + 300)
+
+    // Первая снежинка сразу
+    createSnowflake()
+
+    return () => {
+      clearInterval(interval)
+      container.remove()
+    }
+  }, [])
+
   return (
     <>
       {/* Оставляем только то, что МЕНЯЕТСЯ динамически */}
