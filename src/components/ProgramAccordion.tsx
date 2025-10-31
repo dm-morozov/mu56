@@ -229,7 +229,7 @@ const programs: { [key: string]: Program[] } = {
           price: 'включено',
         },
       ],
-      total: '200 ₽ - 350 ₽ за ребенка',
+      total: '≈ 200 ₽ - 350 ₽ за ребенка',
       description: [
         'Полная новогодняя программа',
         'Активные игры, хоровод, танцы, загадки',
@@ -258,10 +258,10 @@ const programs: { [key: string]: Program[] } = {
     {
       title: 'Ледяное дыхание',
       duration: '≈ 105 минут',
-      price: '18 000 ₽',
+      price: '17 000 ₽',
       items: [
         { name: 'Дед Мороз и Снегурочка', price: '8 000 ₽' },
-        { name: 'Азотное шоу "Новогодний Boom"', price: '8 000 ₽' },
+        { name: 'Азотное шоу с мороженным', price: '7 000 ₽' },
         {
           name: 'Колонка JBL 1000 Вт.',
           price: '2 000 ₽',
@@ -271,7 +271,7 @@ const programs: { [key: string]: Program[] } = {
           price: 'включено',
         },
       ],
-      total: '300 ₽ - 600 ₽ за ребенка',
+      total: '≈ 300 ₽ - 550 ₽ за ребенка',
 
       description: [
         'Полная программа',
@@ -318,7 +318,7 @@ const programs: { [key: string]: Program[] } = {
           price: 'включено',
         },
       ],
-      total: '280 ₽ - 540 ₽ за ребенка',
+      total: '≈ 280 ₽ - 540 ₽ за ребенка',
 
       description: [
         'Полная программа',
@@ -360,7 +360,7 @@ const programs: { [key: string]: Program[] } = {
           price: 'включено',
         },
       ],
-      total: '250 ₽ - 500 ₽ за ребенка',
+      total: '≈ 250 ₽ - 500 ₽ за ребенка',
 
       description: [
         'Полная программа',
