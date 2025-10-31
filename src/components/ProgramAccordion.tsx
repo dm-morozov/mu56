@@ -225,7 +225,7 @@ const programs: { [key: string]: Program[] } = {
           price: '2 000 ₽',
         },
         {
-          name: 'Микрофоны Shure Professional',
+          name: 'Микрофоны Shure',
           price: 'включено',
         },
       ],
@@ -267,7 +267,7 @@ const programs: { [key: string]: Program[] } = {
           price: '2 000 ₽',
         },
         {
-          name: 'Микрофоны Shure Professional',
+          name: 'Микрофоны Shure',
           price: 'включено',
         },
       ],
@@ -314,7 +314,7 @@ const programs: { [key: string]: Program[] } = {
           price: '2 000 ₽',
         },
         {
-          name: 'Микрофоны Shure Professional',
+          name: 'Микрофоны Shure',
           price: 'включено',
         },
       ],
@@ -356,7 +356,7 @@ const programs: { [key: string]: Program[] } = {
           price: '2 000 ₽',
         },
         {
-          name: 'Микрофоны Shure Professional',
+          name: 'Микрофоны Shure',
           price: 'включено',
         },
       ],
@@ -399,7 +399,7 @@ const programs: { [key: string]: Program[] } = {
           price: '2 000 ₽',
         },
         {
-          name: 'Микрофоны Shure Professional',
+          name: 'Микрофоны Shure',
           price: 'включено',
         },
       ],
@@ -442,7 +442,7 @@ const programs: { [key: string]: Program[] } = {
           price: 'включено',
         },
         {
-          name: 'Микрофоны Shure Professional',
+          name: 'Микрофоны Shure',
           price: 'включено',
         },
       ],
