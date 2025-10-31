@@ -32,9 +32,14 @@ export default function CallToAction({
         </p>
         <button
           className="cta-button"
-          onClick={() => (window.location.href = 'tel:+79033922229')}
+          onClick={() => {
+            if (window.ym) {
+              window.ym(105020810, 'reachGoal', 'CALL_CLICK')
+            }
+            window.location.href = 'tel:+79033922229'
+          }}
         >
-          Позвонить Деду Морозу
+          Позвонить Дедушке Морозу
         </button>
         {children}
       </div>
