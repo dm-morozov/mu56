@@ -1,4 +1,4 @@
-// src/App.tsx — УБРАЛИ .container ИЗ-ЗА ХЕДЕРА
+// src/App.tsx
 import './App.css'
 import Header from './components/Header'
 import PriceSection from './components/PriceSection'
@@ -13,8 +13,7 @@ function App() {
     <>
       <Helmet>
         <title>
-          Мир Улыбок — Новогодние праздники для детей в Оренбурге | Аниматоры
-          Дед Мороз и Снегурочка
+          Мир Улыбок — Новогодние праздники для детей в Оренбурге | Аниматоры Дед Мороз и Снегурочка
         </title>
         <meta
           name="description"
@@ -28,24 +27,23 @@ function App() {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://mu56.ru/" />
 
-        {/* === Open Graph / Соцсети === */}
-        <meta
-          property="og:title"
-          content="Мир Улыбок — Лучшие аниматоры Нового года в Оренбурге"
-        />
-        <meta
-          property="og:description"
-          content="Дед Мороз, Снегурочка, сладкая вата и азотное шоу для вашего праздника!"
-        />
+        {/* === Open Graph (для Facebook/VK/Telegram) === */}
+        <meta property="og:title" content="Мир Улыбок — Лучшие аниматоры Нового года в Оренбурге" />
+        <meta property="og:description" content="Дед Мороз, Снегурочка, сладкая вата и азотное шоу для вашего праздника!" />
         <meta property="og:image" content="https://mu56.ru/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta
-          property="og:image:alt"
-          content="Дед Мороз и Снегурочка — Мир Улыбок, новогодний праздник в Оренбурге"
-        />
+        <meta property="og:image:alt" content="Дед Мороз и Снегурочка — Мир Улыбок, новогодний праздник в Оренбурге" />
         <meta property="og:url" content="https://mu56.ru/" />
         <meta property="og:type" content="website" />
+
+        {/* === TWITTER CARDS (ОБЯЗАТЕЛЬНО ДЛЯ X/TWITTER) === */}
+        <meta name="twitter:card" content="summary_large_image" /> {/* summary_large_image — для большой картинки */}
+        <meta name="twitter:site" content="@DemMorozov" /> {/* Твой аккаунт */}
+        <meta name="twitter:title" content="Мир Улыбок — Лучшие аниматоры Нового года в Оренбурге" />
+        <meta name="twitter:description" content="Дед Мороз, Снегурочка, сладкая вата и азотное шоу для вашего праздника!" />
+        <meta name="twitter:image" content="https://mu56.ru/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Дед Мороз и Снегурочка — Мир Улыбок, Оренбург" />
 
         {/* === Schema.org === */}
         <script type="application/ld+json">
@@ -59,7 +57,7 @@ function App() {
             address: {
               '@type': 'PostalAddress',
               addressLocality: 'Оренбург',
-              addressCountry: 'RU',
+              addressCountry': 'RU',
             },
             priceRange: '₽3500–17000',
             openingHours: 'Пн–Вс 9:00–22:00',
@@ -67,12 +65,12 @@ function App() {
           })}
         </script>
 
-        {/* === Yandex Metrika === */}
+        {/* === Yandex Metrika (замени 99999999 на реальный ID) === */}
         <script type="text/javascript">
           {`(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(99999999, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });`}
+          m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+          ym(99999999, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });`}
         </script>
       </Helmet>
       <Header />
