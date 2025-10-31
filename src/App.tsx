@@ -101,7 +101,7 @@ function App() {
           <div>
             <img
               src="https://mc.yandex.ru/watch/105020810"
-              style="position:absolute; left:-9999px;"
+              style={{ position: 'absolute', left: -9999 }}
               alt=""
             />
           </div>
