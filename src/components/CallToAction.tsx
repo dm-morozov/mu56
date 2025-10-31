@@ -1,12 +1,25 @@
-// src/components/Hero.tsx
+// src/components/CallToAction.tsx
+import { type ReactNode } from 'react'
 import photo from '../assets/grandfather-frost-and-snow-maiden.jpg'
 
-export default function Hero() {
+type CallToActionProps = {
+  children?: ReactNode
+  showPhoto?: boolean
+}
+
+export default function CallToAction({
+  children,
+  showPhoto = false,
+}: CallToActionProps) {
   return (
-    <section className="hero">
-      <div className="photo-frame">
-        <img src={photo} alt="Дед Мороз и Снегурочка" />
-      </div>
+    <section
+      className={`hero ${showPhoto ? 'hero-with-photo' : 'cta-section'}`}
+    >
+      {showPhoto && (
+        <div className="photo-frame">
+          <img src={photo} alt="Дед Мороз и Снегурочка" />
+        </div>
+      )}
       <div className="hero-text">
         <h2>
           Позвоните <br />
@@ -23,6 +36,7 @@ export default function Hero() {
         >
           Позвонить Деду Морозу
         </button>
+        {children}
       </div>
     </section>
   )

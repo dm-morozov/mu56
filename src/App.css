@@ -1,16 +1,5 @@
 /* src/App.css */
 
-@font-face {
-  font-family: 'Bubblegum Sans';
-  src: url('BubblegumSans-Regular.eot');
-  src: local('BubblegumSans-Regular'),
-    url('BubblegumSans-Regular.eot?#iefix') format('embedded-opentype'),
-    url('BubblegumSans-Regular.woff') format('woff'),
-    url('BubblegumSans-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 :root {
   --primary: #6c5ce7;
   --accent: #00b894;
@@ -119,24 +108,65 @@ body {
   margin: 1.2rem 0 1.8rem;
 }
 
+/* === ЗАГОЛОВОК "МИР УЛЫБОК" === */
 .header-text .logoTitle {
   font-family: 'Comfortaa', cursive;
-  font-size: 3rem; /* Крупный размер для десктопа */
-  /* ВСТАВЬТЕ СЮДА ВАШ ВЫБОР: #1f4068, #161e27 ИЛИ #005aa7, #331780 */
-  background: linear-gradient(135deg, #1f4068, #161e27);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
   margin-bottom: 0.6rem;
-  line-height: 1.3;
+  line-height: 1.2;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.4),
+    /* Золотое свечение */ 0 2px 4px rgba(0, 0, 0, 0.3),
+    /* Тень */ 0 4px 8px rgba(0, 0, 0, 0.2); /* Глубина */
+  position: relative;
+  z-index: 2;
 }
 
+.header-text .logoTitle::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.4) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 3; /* Выше текста! */
+  filter: blur(2px);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* === ПОДЗАГОЛОВОК === */
 .header-text p {
-  font-size: 0.95rem;
-  color: #4a5568;
+  font-size: 1.05rem;
+  color: white;
   line-height: 1.6;
   max-width: 92%;
-  margin: 0 auto;
-  font-weight: 500;
+  margin: 0.8rem auto 0;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  opacity: 0.95;
 }
 
 .logo {
@@ -660,24 +690,172 @@ body {
 }
 
 /* === ФУТЕР === */
-footer {
+.footer {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  color: white;
+  padding: 3rem 1rem 1.5rem;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    #fbbf24,
+    #f59e0b,
+    #ef4444,
+    #8b5cf6,
+    #3b82f6
+  );
+  background-size: 200%;
+  animation: rainbow 6s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-column {
   text-align: center;
-  padding: 2rem 0;
-  color: var(--gray-600);
-  font-size: 0.85rem;
-  border-top: 1px solid #eee;
-  margin-top: 2rem;
 }
 
-footer a {
-  color: var(--primary);
-  font-weight: 500;
-  margin: 0 0.5rem;
+.footer-title {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #fbbf24;
+}
+
+.snowflake-icon {
+  color: #dbeafe;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.footer-phone {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.footer-phone a {
+  color: #fbbf24;
   text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
 }
 
-footer a:hover {
-  text-decoration: underline;
+.footer-phone a:hover {
+  color: #fcd34d;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-link:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-link.telegram {
+  color: #229ed9;
+}
+.social-link.whatsapp {
+  color: #25d366;
+}
+.social-link.vk {
+  color: #4c75a3;
+}
+
+.social-link:hover.telegram {
+  background: #229ed9;
+  color: white;
+}
+.social-link:hover.whatsapp {
+  background: #25d366;
+  color: white;
+}
+.social-link:hover.vk {
+  background: #4c75a3;
+  color: white;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+  color: #bfdbfe;
+}
+
+/* === АДАПТИВ === */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer-column {
+    text-align: left;
+    flex: 1;
+  }
+
+  .footer-column:first-child {
+    margin-right: 2rem;
+  }
 }
 
 /* === ФИЛЬТР-ТАБЫ === */
@@ -731,6 +909,15 @@ footer a:hover {
 
   .header-text h1 {
     font-size: 1.6rem;
+  }
+  .header-text .logoTitle {
+    font-size: 2.4rem;
+  }
+
+  header-text .logoTitle::before {
+    width: 55px;
+    height: 55px;
+    top: -12px;
   }
 
   .header-text p {
@@ -844,7 +1031,11 @@ footer a:hover {
   }
 
   .header-text h1 {
-    font-size: 1.55rem;
+    font-size: 2rem;
+  }
+
+  .header-text .logoTitle {
+    font-size: 2rem;
   }
 
   .header-text p {
@@ -864,10 +1055,6 @@ footer a:hover {
     gap: 0;
   }
 
-  .header-text .logoTitle {
-    font-size: 2rem;
-  }
-
   .filter-tabs {
     gap: 0.5rem;
   }
@@ -875,5 +1062,15 @@ footer a:hover {
   .filter-tab {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
+  }
+
+  .footer-title {
+    font-size: 1.3rem;
+  }
+
+  .social-link {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
   }
 }
