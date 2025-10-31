@@ -4,7 +4,7 @@ import bookletPreview from '../assets/preview_booklet.jpg'
 
 export default function BookletSection() {
   return (
-    <section className="booklet-section">
+    <section id="booklet" className="booklet-section">
       <div className="booklet-content">
         <h2 className="section-title">Наши праздники круглый год</h2>
         <p className="booklet-text">
