@@ -36,7 +36,7 @@ export default function ProgramGallery({ images }: ProgramGalleryProps) {
 
   return (
     <div className="program-gallery-wrapper">
-      <h3>Тематические фото</h3>
+      <h3 className="gallery-title">🎄 Тематические фото</h3>
       <div className="program-gallery-grid">
         {images.map((img, i) => (
           <div

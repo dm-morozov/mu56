@@ -405,136 +405,6 @@ body {
   flex-shrink: 0;
 }
 
-/* === ГАЛЕРЕЯ === */
-.gallery {
-  margin: 3rem 0;
-  text-align: center;
-}
-
-.gallery h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: var(--gray-900);
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 0.8rem;
-  padding: 0 0.5rem;
-}
-
-.gallery-item {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 1;
-}
-
-/* === ЛАЙТБОКС === */
-.lightbox-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-
-.lightbox-content {
-  position: relative;
-  max-width: 95vw;
-  max-height: 95vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: white;
-  color: var(--gray-900);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-.lightbox-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--gray-900);
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  font-size: 1.8rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow);
-  z-index: 10;
-  transition: var(--transition);
-}
-
-.lightbox-nav:hover {
-  background: white;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.lightbox-nav.prev {
-  left: 10px;
-}
-.lightbox-nav.next {
-  right: 10px;
-}
-
-.lightbox-counter {
-  margin-top: 1rem;
-  color: white;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
 /* === СТИЛИ ДЛЯ ГАЛЕРЕИ ВНУТРИ АККОРДЕОНА (ProgramGallery) === */
 
 .program-gallery-wrapper {
@@ -547,7 +417,7 @@ body {
 
 .program-gallery-wrapper h3 {
   font-size: 1.1rem;
-  color: #333;
+  color: #d81b60;
   margin-top: 0;
   margin-bottom: 10px;
   border-bottom: 1px solid #eee;
@@ -580,100 +450,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-/* === АДАПТИВ === */
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-  }
-  .lightbox-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 1.4rem;
-  }
-  .lightbox-close {
-    width: 32px;
-    height: 32px;
-    font-size: 1.2rem;
-    top: -8px;
-    right: -8px;
-  }
-}
-
-/* === БУКЛЕТ === */
-.booklet-section {
-  margin: 3rem 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  background: white;
-  padding: 2rem;
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-}
-
-.booklet-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.booklet-text {
-  color: var(--gray-600);
-  margin: 1rem 0;
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 90%;
-}
-
-.booklet-button {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  padding: 0.9rem 1.8rem;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
-  transition: var(--transition);
-  margin-top: 0.5rem;
-}
-
-.booklet-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
-}
-
-/* === НАКЛОННАЯ КАРТИНКА === */
-.booklet-preview {
-  display: flex;
-  justify-content: center;
-  perspective: 1000px;
-}
-
-.booklet-tilt {
-  transform: rotateY(-12deg) rotateX(8deg);
-  transform-style: preserve-3d;
-  transition: var(--transition);
-  max-width: 320px;
-  width: 100%;
-}
-
-.booklet-tilt:hover {
-  transform: rotateY(-8deg) rotateX(4deg) translateY(-6px);
-}
-
-.booklet-image {
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
-  display: block;
 }
 
 /* === ПРИМЕЧАНИЕ === */
@@ -891,6 +667,94 @@ body {
   }
 }
 
+.gallery-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #d81b60;
+  margin: 20px 0 12px;
+  text-align: center;
+}
+
+.addons-section {
+  margin: 24px 0;
+  padding: 16px;
+  background: linear-gradient(135deg, #fff8fb, #f8faff);
+  border-radius: 16px;
+  border: 2px dashed #e91e63;
+}
+
+.addons-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #c2185b;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.addon-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.addon-card:hover {
+  transform: translateY(-4px);
+}
+
+.addon-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.addon-info {
+  padding: 12px;
+  text-align: center;
+}
+
+.addon-info strong {
+  color: #c2185b;
+  font-size: 1rem;
+}
+
+.addon-meta {
+  font-size: 0.9rem;
+  color: #e91e63;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.addon-desc {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 6px 0 0;
+  line-height: 1.3;
+}
+
+.description-list {
+  margin-top: 20px;
+}
+
+.description-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.description-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 /* === АДАПТИВ === */
 @media (min-width: 768px) {
   .footer-content {
@@ -938,6 +802,14 @@ body {
   background: var(--primary);
   color: white;
   border-color: var(--primary);
+}
+
+.addon-hosts {
+  font-weight: 600;
+  color: #c2185b;
+  /* font-size: 1rem; */
+  display: block;
+  margin-bottom: 6px;
 }
 
 /* === АНИМАЦИЯ === */
@@ -993,7 +865,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 1.5rem 0 3rem;
+    margin: 1.5rem auto;
     gap: 4rem;
   }
 
@@ -1010,28 +882,6 @@ body {
   }
   .program-title {
     font-size: 1.3rem;
-  }
-  .gallery-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .booklet-section {
-    grid-template-columns: 1fr 1fr;
-    padding: 2.5rem;
-  }
-
-  .booklet-content {
-    text-align: left;
-    align-items: flex-start;
-  }
-
-  .booklet-text {
-    font-size: 1.05rem;
-    max-width: 100%;
-  }
-
-  .booklet-tilt {
-    max-width: 380px;
   }
 
   .header-full-bg {
@@ -1059,19 +909,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .booklet-tilt {
-    transform: rotateY(-10deg) rotateX(6deg);
-    max-width: 260px;
-  }
-
-  .booklet-tilt:hover {
-    transform: rotateY(-8deg) rotateX(4deg) translateY(-4px);
-  }
-
-  .booklet-image {
-    border-radius: 14px;
-  }
-
   .header-full-bg {
     min-height: 300px;
   }

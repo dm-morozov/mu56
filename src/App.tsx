@@ -2,12 +2,14 @@
 import './App.css'
 import Header from './components/Header'
 import PriceSection from './components/PriceSection'
-import BookletSection from './components/BookletSection'
 import Footer from './components/Footer'
-import Gallery from './components/Gallery'
+import Gallery from './components/Gallery/Gallery'
 import CallToAction from './components/CallToAction'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useEffect } from 'react'
+import WhyUsSection from './components/WhyUsSection/WhyUsSection'
+import GuaranteeSection from './components/GuaranteeSection/GuaranteeSection'
+import BookletSection from './components/BookletSection/BookletSection'
 
 function App() {
   useEffect(() => {
@@ -74,19 +76,23 @@ function App() {
       </Helmet>
 
       <Header />
-      <main className="container">
+      <main>
         <CallToAction showPhoto={true} />
         <Gallery />
-        <section id="prices">
+        <WhyUsSection />
+        <section id="prices" className="container">
           <PriceSection />
         </section>
-        <CallToAction />
+        <GuaranteeSection />
         <BookletSection />
-        <p className="note">
-          * Цены действительны в пределах города.
-          <br />
-          Выезд в удалённый район ≈ 500 ₽ (договорная).
-        </p>
+        <CallToAction />
+        <section id="road" className="container">
+          <p className="note">
+            * Цены действительны в пределах города.
+            <br />
+            Выезд в удалённый район ≈ 500 ₽ (договорная).
+          </p>
+        </section>
       </main>
       <Footer />
     </>

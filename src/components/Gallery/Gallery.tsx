@@ -1,11 +1,14 @@
-// src/components/Gallery.tsx
+// src/components/Gallery/Gallery.tsx
 import { useState } from 'react'
-import img1 from '../assets/gallery/1.jpg'
-import img2 from '../assets/gallery/2.jpg'
-import img3 from '../assets/gallery/3.jpg'
-import img4 from '../assets/gallery/4.jpg'
-import img5 from '../assets/gallery/5.jpg'
-import img6 from '../assets/gallery/6.jpg'
+import styles from './Gallery.module.css' // Импорт модульных стилей
+// Импорты изображений не меняются, но пути должны быть относительно App.tsx
+// или настроены в сборщике (если пути были корректны, оставляем как есть)
+import img1 from '../../assets/gallery/1.jpg'
+import img2 from '../../assets/gallery/2.jpg'
+import img3 from '../../assets/gallery/3.jpg'
+import img4 from '../../assets/gallery/4.jpg'
+import img5 from '../../assets/gallery/5.jpg'
+import img6 from '../../assets/gallery/6.jpg'
 
 const images = [
   {
@@ -57,11 +60,12 @@ export default function Gallery() {
   }
 
   return (
-    <section id="gallery" className="gallery">
-      <h2>Наши костюмы в лицах</h2>
-      <div className="gallery-grid">
+    // Применяем модульные классы, оставляем 'container' как глобальный
+    <section id="gallery" className={`container ${styles.gallery}`}>
+      <h2 className={styles.title}>Наши костюмы в лицах</h2>
+      <div className={styles.grid}>
         {images.map((img, i) => (
-          <div key={i} className="gallery-item" onClick={() => openLightbox(i)}>
+          <div key={i} className={styles.item} onClick={() => openLightbox(i)}>
             <img src={img.src} alt={img.alt} loading="lazy" />
           </div>
         ))}
@@ -69,28 +73,34 @@ export default function Gallery() {
 
       {/* === ЛАЙТБОКС === */}
       {lightboxIndex !== null && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
+        <div className={styles.lightboxOverlay} onClick={closeLightbox}>
           <div
-            className="lightbox-content"
+            className={styles.lightboxContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="lightbox-close" onClick={closeLightbox}>
-              ×
+            <button className={styles.lightboxClose} onClick={closeLightbox}>
+              &times; {/* Используем символ, чтобы избежать конфликта */}
             </button>
-            <button className="lightbox-nav prev" onClick={prevImage}>
-              ❮
+            <button
+              className={`${styles.lightboxNav} ${styles.prev}`}
+              onClick={prevImage}
+            >
+              &#10094; {/* Стрелка влево */}
             </button>
-            <button className="lightbox-nav next" onClick={nextImage}>
-              ❯
+            <button
+              className={`${styles.lightboxNav} ${styles.next}`}
+              onClick={nextImage}
+            >
+              &#10095; {/* Стрелка вправо */}
             </button>
 
             <img
               src={images[lightboxIndex].src}
               alt={images[lightboxIndex].alt}
-              className="lightbox-image"
+              className={styles.lightboxImage}
             />
 
-            <div className="lightbox-counter">
+            <div className={styles.lightboxCounter}>
               {lightboxIndex + 1} / {images.length}
             </div>
           </div>

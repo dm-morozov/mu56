@@ -1,0 +1,127 @@
+/* src/components/BookletSection/BookletSection.module.css */
+
+/* === БУКЛЕТ (Основная секция) === */
+.section {
+  /* Заменяет .booklet-section */
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 24px;
+  /* Используем глобальные CSS переменные */
+  box-shadow: var(--shadow);
+}
+
+.content {
+  /* Заменяет .booklet-content */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  /* Заменяет .booklet-text */
+  color: var(--gray-600);
+  margin: 1rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.button {
+  /* Заменяет .booklet-button */
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+}
+
+/* === НАКЛОННАЯ КАРТИНКА === */
+.preview {
+  /* Заменяет .booklet-preview */
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.tilt {
+  /* Заменяет .booklet-tilt */
+  transform: rotateY(-12deg) rotateX(8deg);
+  transform-style: preserve-3d;
+  transition: var(--transition);
+  max-width: 320px;
+  width: 100%;
+}
+
+.tilt:hover {
+  transform: rotateY(-8deg) rotateX(4deg) translateY(-6px);
+}
+
+.image {
+  /* Заменяет .booklet-image */
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  display: block;
+}
+
+/* === АДАПТИВ (min-width: 768px) === */
+@media (min-width: 768px) {
+  .section {
+    /* Заменяет .booklet-section */
+    grid-template-columns: 1fr 1fr;
+    padding: 2.5rem;
+  }
+
+  .content {
+    /* Заменяет .booklet-content */
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .text {
+    /* Заменяет .booklet-text */
+    font-size: 1.05rem;
+    max-width: 100%;
+  }
+
+  .tilt {
+    /* Заменяет .booklet-tilt */
+    max-width: 380px;
+  }
+}
+
+/* === АДАПТИВ (max-width: 480px) === */
+@media (max-width: 480px) {
+  .tilt {
+    /* Заменяет .booklet-tilt */
+    transform: rotateY(-10deg) rotateX(6deg);
+    max-width: 260px;
+  }
+
+  .tilt:hover {
+    transform: rotateY(-8deg) rotateX(4deg) translateY(-4px);
+  }
+
+  .image {
+    /* Заменяет .booklet-image */
+    border-radius: 14px;
+  }
+}
