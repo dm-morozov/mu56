@@ -1,0 +1,122 @@
+/* src/components/PriceSection/PriceSection.module.css */
+
+/* === СЕКЦИЯ === */
+.priceSection {
+  position: relative;
+  padding: 3rem 0;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+/* === ФОН — ЧУТЬ ТЕМНЕЕ ДЛЯ КОНТРАСТА === */
+.sectionBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #bbdefb 0%, #d1ecea 50%, #fff9c4 100%);
+  opacity: 0.32;
+  z-index: -1;
+  animation: pulse 12s ease-in-out infinite;
+}
+
+/* === СНЕЖИНКИ — 100% КАК В ХЕДЕРЕ === */
+.snowflakesWrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.snowflakesContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.snowflake {
+  position: absolute;
+  /* top задаётся в JS: от -0% до -30% */
+  animation: fall linear forwards;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.18));
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.85);
+}
+
+@keyframes fall {
+  from {
+    top: -5%;
+    transform: rotate(0deg);
+  }
+  to {
+    top: 105%;
+    transform: rotate(360deg);
+  }
+}
+
+/* === ФИЛЬТРЫ === */
+.filterTabs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0 3rem;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.filterTab {
+  background: white;
+  border: 2px solid #e0e7ff;
+  color: var(--primary);
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filterTab:hover {
+  background: #e0e7ff;
+  border-color: var(--primary);
+}
+
+.filterTab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* === ПРОГРАММЫ === */
+.programSection {
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* === АДАПТИВ === */
+@media (max-width: 480px) {
+  .filterTabs {
+    gap: 0.6rem;
+  }
+  .filterTab {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  .programSection {
+    margin-bottom: 2rem;
+  }
+}
+
+/* === ПУЛЬСАЦИЯ === */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

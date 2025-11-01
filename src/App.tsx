@@ -1,7 +1,6 @@
 // src/App.tsx
 import './App.css'
 import Header from './components/Header'
-import PriceSection from './components/PriceSection'
 import Footer from './components/Footer'
 import Gallery from './components/Gallery/Gallery'
 import CallToAction from './components/CallToAction'
@@ -10,6 +9,7 @@ import { useEffect } from 'react'
 import WhyUsSection from './components/WhyUsSection/WhyUsSection'
 import GuaranteeSection from './components/GuaranteeSection/GuaranteeSection'
 import BookletSection from './components/BookletSection/BookletSection'
+import PriceSection from './components/PriceSection/PriceSection'
 
 function App() {
   useEffect(() => {
@@ -80,9 +80,7 @@ function App() {
         <CallToAction showPhoto={true} />
         <Gallery />
         <WhyUsSection />
-        <section id="prices" className="container">
-          <PriceSection />
-        </section>
+        <PriceSection />
         <GuaranteeSection />
         <BookletSection />
         <CallToAction />

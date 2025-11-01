@@ -9,7 +9,7 @@
   background: linear-gradient(135deg, var(--primary), var(--accent));
   padding: 4rem 0;
   text-align: center;
-  margin: 3rem auto;
+  margin: 0 auto 3rem;
 }
 
 .guarantee-content {
