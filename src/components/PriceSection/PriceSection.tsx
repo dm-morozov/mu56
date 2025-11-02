@@ -2,6 +2,8 @@
 import { useState, useEffect, useRef } from 'react'
 import ProgramAccordion from './ProgramAccordion'
 import styles from './PriceSection.module.css'
+import sharedStyles from '../../SharedStyles.module.css'
+import PriceNote from '../PriceNote/PriceNote'
 
 export default function PriceSection() {
   const [filter, setFilter] = useState<'all' | 'home' | 'class' | 'yard'>('all')
@@ -67,7 +69,9 @@ export default function PriceSection() {
       <div ref={snowflakesRef} className={styles.snowflakesWrapper}></div>
 
       <div className="container">
-        <h2 className="section-title">Какой праздник вас интересует?</h2>
+        <h2 className={sharedStyles.sectionTitle}>
+          Какой праздник вас интересует?
+        </h2>
 
         <div className={styles.filterTabs}>
           <button
@@ -106,7 +110,7 @@ export default function PriceSection() {
 
         {(filter === 'all' || filter === 'home') && (
           <div className={styles.programSection}>
-            <h3 className="section-title">Домашний Праздник</h3>
+            <h3 className={sharedStyles.sectionTitle}>Домашний Праздник</h3>
             <ProgramAccordion
               type="home"
               subtitle="С Дедом Морозом и Снегурочкой"
@@ -116,8 +120,8 @@ export default function PriceSection() {
 
         {(filter === 'all' || filter === 'class') && (
           <div className={styles.programSection}>
-            <h3 className="section-title">
-              Для классов и <br className="hidden md:block" /> детских садов
+            <h3 className={sharedStyles.sectionTitle}>
+              Для классов и детских садов
             </h3>
             <ProgramAccordion
               type="class"
@@ -128,13 +132,14 @@ export default function PriceSection() {
 
         {(filter === 'all' || filter === 'yard') && (
           <div className={styles.programSection}>
-            <h3 className="section-title">На улице</h3>
+            <h3 className={sharedStyles.sectionTitle}>На улице</h3>
             <ProgramAccordion
               type="yard"
               subtitle="Дедушка Мороз со Снегурочкой"
             />
           </div>
         )}
+        <PriceNote />
       </div>
     </section>
   )

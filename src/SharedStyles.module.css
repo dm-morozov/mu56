@@ -1,0 +1,24 @@
+/* === ОБЩИЕ ЗАГОЛОВКИ СЕКЦИЙ === */
+
+.sectionTitle {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 2.5rem 0 0.8rem;
+  color: var(--gray-900);
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--gray-600);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* === АДАПТИВ (min-width: 768px) для заголовков === */
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+}

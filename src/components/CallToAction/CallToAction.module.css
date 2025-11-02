@@ -1,0 +1,107 @@
+/* src/components/CallToAction/CallToAction.module.css */
+
+/* === HERO (styles.hero) === */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Сохраняем центрирование текста для мобильного вида */
+  margin: 3rem 0;
+  padding: 1rem;
+  gap: 1.2rem;
+}
+
+/* styles.heroText - Ограничиваем максимальную ширину для лучшего вида текста */
+.heroText {
+  max-width: 500px; /* Добавляем ограничение, чтобы текст не был слишком широким на десктопе */
+}
+
+/* styles.photoFrame */
+.photoFrame {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid white;
+  box-shadow: var(--shadow); /* Используем глобальную переменную */
+}
+
+/* Scoped selector для img внутри styles.photoFrame */
+.photoFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* styles.heroText h2 */
+.heroText h2 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.8rem;
+  /* Используем глобальные переменные */
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.6rem;
+  margin-top: 20px;
+}
+
+/* styles.heroText p */
+.heroText p {
+  color: var(--gray-600); /* Используем глобальную переменную */
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* === КНОПКА CTA (styles.ctaButton) === */
+.ctaButton {
+  /* Используем глобальные переменные */
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  font-weight: 600;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(108, 92, 231, 0.3);
+  transition: var(--transition); /* Используем глобальную переменную */
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+}
+
+/* === АДАПТИВ (media queries) === */
+@media (min-width: 768px) {
+  /* Переопределение .hero для десктопа */
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* УДАЛЕНО: text-align: left; - Это вызывало прижатие текста к левому краю.
+       Оставляем text-align: center; или не задаем его здесь, чтобы 
+       сохранить центрирование, если это необходимо.
+    */
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    gap: 4rem;
+  }
+
+  /* Явно устанавливаем выравнивание текста для десктопа, чтобы он был слева 
+     относительно фото, но только если фото слева */
+  .heroText {
+    text-align: center;
+  }
+
+  /* Переопределение .heroText h2 для десктопа */
+  .heroText h2 {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  /* Переопределение .photoFrame для десктопа */
+  .photoFrame {
+    width: 300px;
+    height: 300px;
+  }
+}

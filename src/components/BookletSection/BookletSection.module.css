@@ -1,21 +1,69 @@
 /* src/components/BookletSection/BookletSection.module.css */
 
 /* === БУКЛЕТ (Основная секция) === */
+
+/* === ФОН СЕКЦИИ === */
+.bookletSection {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+.bookletSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #bbdefb 0%, #d1ecea 50%, #fff9c4 100%);
+  opacity: 0.28;
+  z-index: -1;
+  animation: pulse 14s ease-in-out infinite alternate;
+}
+
+/* Пульсация фона */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* === КАРТОЧКА С ВНУТРЕННИМ ГРАДИЕНТОМ === */
 .section {
-  /* Заменяет .booklet-section */
-  margin: 3rem auto;
+  position: relative;
+  padding: 2rem;
+  margin: 3rem 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   background: white;
-  padding: 2rem;
   border-radius: 24px;
-  /* Используем глобальные CSS переменные */
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
+/* Внутренний градиент карточки (сверху темнее → снизу светлее) */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(139, 195, 247, 0.18) 0%,
+    rgba(209, 236, 234, 0.12) 40%,
+    rgba(255, 249, 196, 0.06) 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+/* === КОНТЕНТ === */
 .content {
-  /* Заменяет .booklet-content */
+  position: relative; /* Чтобы текст был над градиентом */
+  z-index: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -24,7 +72,6 @@
 }
 
 .text {
-  /* Заменяет .booklet-text */
   color: var(--gray-600);
   margin: 1rem 0;
   font-size: 1rem;
@@ -33,7 +80,6 @@
 }
 
 .button {
-  /* Заменяет .booklet-button */
   display: inline-block;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: white;
@@ -44,23 +90,23 @@
   box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
   transition: var(--transition);
   margin-top: 0.5rem;
+  cursor: pointer; /* ✅ Курсор-указатель для кнопки */
 }
 
 .button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+  text-decoration: none;
 }
 
 /* === НАКЛОННАЯ КАРТИНКА === */
 .preview {
-  /* Заменяет .booklet-preview */
   display: flex;
   justify-content: center;
   perspective: 1000px;
 }
 
 .tilt {
-  /* Заменяет .booklet-tilt */
   transform: rotateY(-12deg) rotateX(8deg);
   transform-style: preserve-3d;
   transition: var(--transition);
@@ -69,41 +115,54 @@
 }
 
 .tilt:hover {
-  transform: rotateY(-8deg) rotateX(4deg) translateY(-6px);
+  transform: rotateY(-8deg) rotateX(4deg) translateY(-6px) scale(1.02);
+  filter: brightness(1.05);
+}
+
+.imageButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer; /* ✅ Курсор-указатель на кликабельном изображении */
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  outline: none;
+}
+
+.imageButton:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
 }
 
 .image {
-  /* Заменяет .booklet-image */
   width: 100%;
   height: auto;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
   display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: inherit;
 }
 
 /* === АДАПТИВ (min-width: 768px) === */
 @media (min-width: 768px) {
   .section {
-    /* Заменяет .booklet-section */
-    grid-template-columns: 1fr 1fr;
     padding: 2.5rem;
+    grid-template-columns: 1fr 1fr;
   }
 
   .content {
-    /* Заменяет .booklet-content */
     text-align: left;
     align-items: flex-start;
   }
 
   .text {
-    /* Заменяет .booklet-text */
     font-size: 1.05rem;
     max-width: 100%;
   }
 
   .tilt {
-    /* Заменяет .booklet-tilt */
     max-width: 380px;
   }
 }
@@ -111,7 +170,6 @@
 /* === АДАПТИВ (max-width: 480px) === */
 @media (max-width: 480px) {
   .tilt {
-    /* Заменяет .booklet-tilt */
     transform: rotateY(-10deg) rotateX(6deg);
     max-width: 260px;
   }
@@ -121,7 +179,6 @@
   }
 
   .image {
-    /* Заменяет .booklet-image */
     border-radius: 14px;
   }
 }

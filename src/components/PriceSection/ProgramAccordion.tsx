@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import ProgramGallery from './ProgramGallery'
 import styles from './ProgramAccordion.module.css'
+import sharedStyles from '../../SharedStyles.module.css'
 
 // ДАННЫЕ — из .ts
 import { programs, type Program as RawProgram } from './PriceData'
@@ -30,9 +31,8 @@ export default function ProgramAccordion({ type, subtitle }: Props) {
 
   return (
     <div className={styles.accordionWrapper}>
-      <div className={styles.accordionBg}></div>
-
-      <p className="section-subtitle">{subtitle}</p>
+      <div className={styles.sectionDivider}></div>
+      <p className={sharedStyles.sectionSubtitle}>{subtitle}</p>
 
       <div className={styles.accordion}>
         {data.map((prog, i) => (

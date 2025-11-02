@@ -1,0 +1,22 @@
+/* src/components/PriceNote/PriceNote.module.css */
+
+.wrapper {
+  max-width: 730px;
+  margin: 0 auto;
+}
+
+.note {
+  background: white;
+  border: 1px solid #eee;
+  padding: 1.2rem;
+  border-radius: var(--radius); /* Используем глобальную переменную */
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gray-600); /* Используем глобальную переменную */
+  box-shadow: var(--shadow-sm); /* Используем глобальную переменную */
+  transition: var(--transition);
+}
+
+.note:hover {
+  box-shadow: var(--shadow); /* Используем глобальную переменную */
+}

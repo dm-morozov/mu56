@@ -1,4 +1,3 @@
-// src/components/GuaranteeSection/GuaranteeSection.tsx
 // ОТДЕЛЬНЫЙ КОМПОНЕНТ: Гарантия
 
 import { FaShieldAlt, FaPhoneAlt } from 'react-icons/fa'
@@ -9,18 +8,18 @@ export default function GuaranteeSection() {
   // если он используется повсеместно для центрирования контента.
   // Класс 'cta-button' также оставлен, если он является общим стилем кнопки.
   return (
-    <section className={styles['guarantee-section']}>
+    <section className={styles.guaranteeSection}>
       <div className="container">
-        <div className={styles['guarantee-content']}>
-          <FaShieldAlt className={styles['guarantee-icon']} />
-          <h2 className={styles['guarantee-title']}>
+        <div className={styles.guaranteeContent}>
+          <FaShieldAlt className={styles.guaranteeIcon} />
+          <h2 className={styles.guaranteeTitle}>
             Гарантия <span className="gradient-text">Отличного Праздника!</span>
           </h2>
-          <p className={styles['guarantee-text']}>
+          <p className={styles.guaranteeText}>
             Не понравится — <strong>можете не платить!</strong>
           </p>
           <button
-            className={`cta-button ${styles['guarantee-btn']}`} // Комбинируем общие и модульные стили
+            className={`cta-button ${styles.guaranteeBtn}`} // Комбинируем общие и модульные стили
             onClick={() => {
               // Yandex Metrica goal
               if (window.ym) window.ym(105020810, 'reachGoal', 'GUARANTEE_CALL')

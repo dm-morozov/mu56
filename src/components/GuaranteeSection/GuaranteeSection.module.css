@@ -1,23 +1,21 @@
-/* src/components/GuaranteeSection/GuaranteeSection.module.css */
+/* ============================================= /
+/ === GUARANTEE SECTION (Модульные стили) === /
+/ ============================================= */
 
-/* ============================================= */
-/* === GUARANTEE SECTION (Модульные стили) === */
-/* ============================================= */
-
-.guarantee-section {
+.guaranteeSection {
   /* Предполагается, что --primary, --accent и --gold определены глобально */
   background: linear-gradient(135deg, var(--primary), var(--accent));
   padding: 4rem 0;
   text-align: center;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
 }
 
-.guarantee-content {
+.guaranteeContent {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.guarantee-icon {
+.guaranteeIcon {
   font-size: 3rem;
   color: var(--gold);
   margin-bottom: 1rem;
@@ -40,34 +38,67 @@
   }
 }
 
-.guarantee-title {
+.guaranteeTitle {
   font-size: 2.2rem;
   color: white;
   margin-bottom: 1rem;
 }
 
-.guarantee-text {
+.guaranteeText {
   font-size: 1.3rem;
   color: white;
   margin-bottom: 2rem;
   opacity: 0.95;
 }
 
-.guarantee-btn {
-  /* Переопределяем стили для кнопки, предполагая, что cta-button задает базовые стили */
-  font-size: 1.2rem !important;
-  padding: 1.2rem 3rem !important;
+.guaranteeBtn {
+  background: linear-gradient(
+    135deg,
+    var(--gold) 0%,
+    #ff6b81 50%,
+    #d4a77d 50%,
+    #ffcf9a 100%
+  );
+  background-size: 220% 100%; /* ← Ключевой фикс */
+  background-position: left center;
+  background-repeat: no-repeat; /* ← Обязательно */
+
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1.2rem 3rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 107, 129, 0.4);
+
+  transition: background-position 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s ease-out, box-shadow 0.4s ease-out, filter 0.3s ease;
+
+  filter: brightness(1);
 }
 
-/* ============================================= */
-/* === АДАПТИВ (для данной секции) === */
-/* ============================================= */
+.guaranteeBtn:hover {
+  background-position: right center;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(255, 107, 129, 0.7);
+  filter: brightness(1.08);
+}
+
+.guaranteeBtn:active {
+  transform: translateY(-1px) scale(0.99);
+  transition-duration: 0.1s;
+}
+
+/* ============================================= /
+/ === АДАПТИВ (для данной секции) === /
+/ ============================================= */
 
 @media (max-width: 480px) {
-  .guarantee-title {
+  .guaranteeTitle {
     font-size: 1.8rem;
   }
-  .guarantee-text {
+  .guaranteeText {
     font-size: 1.1rem;
   }
 }
