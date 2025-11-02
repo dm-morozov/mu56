@@ -1,0 +1,11 @@
+/* public/fonts/Marvin-Round.css */
+@font-face {
+  font-family: 'Marvin Round';
+  src: url('./Marvin-Round.woff2') format('woff2'),
+    url('./Marvin-Round.woff') format('woff'),
+    url('./Marvin-Round.ttf') format('truetype'),
+    url('./Marvin-Round.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

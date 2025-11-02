@@ -50,7 +50,6 @@ export default function Header() {
 
     const createSnowflake = () => {
       const flake = document.createElement('div')
-      // 🛑 ИСПОЛЬЗУЕМ КЛАСС ИЗ МОДУЛЯ
       flake.className = styles.snowflake
 
       flake.innerHTML =
