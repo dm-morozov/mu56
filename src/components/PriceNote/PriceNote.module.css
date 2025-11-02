@@ -1,6 +1,7 @@
 /* src/components/PriceNote/PriceNote.module.css */
 
 .wrapper {
+  position: relative;
   max-width: 730px;
   margin: 0 auto;
 }
