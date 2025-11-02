@@ -68,20 +68,14 @@ export default function PriceSection() {
       <div className={styles.sectionBg}></div>
       <div ref={snowflakesRef} className={styles.snowflakesWrapper}></div>
 
-      <div className="container">
-        <h2 className={sharedStyles.sectionTitle}>
-          Какой праздник вас интересует?
+      <div className={styles.containerPrice}>
+        <h2 className={styles.sectionTitle}>
+          Какой праздник{' '}
+          <span className={styles.gradientText}>вас интересует</span>
+          <span className={styles.questionMark}>?</span>
         </h2>
 
         <div className={styles.filterTabs}>
-          <button
-            className={`${styles.filterTab} ${
-              filter === 'all' ? styles.active : ''
-            }`}
-            onClick={() => setFilter('all')}
-          >
-            Все
-          </button>
           <button
             className={`${styles.filterTab} ${
               filter === 'home' ? styles.active : ''
@@ -106,10 +100,18 @@ export default function PriceSection() {
           >
             На улице
           </button>
+          <button
+            className={`${styles.filterTab} ${
+              filter === 'all' ? styles.active : ''
+            }`}
+            onClick={() => setFilter('all')}
+          >
+            Все
+          </button>
         </div>
 
         {(filter === 'all' || filter === 'home') && (
-          <div className={styles.programSection}>
+          <div className={styles.programSection} data-type="home">
             <h3 className={sharedStyles.sectionTitle}>Домашний Праздник</h3>
             <ProgramAccordion
               type="home"
@@ -119,7 +121,7 @@ export default function PriceSection() {
         )}
 
         {(filter === 'all' || filter === 'class') && (
-          <div className={styles.programSection}>
+          <div className={styles.programSection} data-type="class">
             <h3 className={sharedStyles.sectionTitle}>
               Для классов и детских садов
             </h3>
@@ -131,7 +133,7 @@ export default function PriceSection() {
         )}
 
         {(filter === 'all' || filter === 'yard') && (
-          <div className={styles.programSection}>
+          <div className={styles.programSection} data-type="yard">
             <h3 className={sharedStyles.sectionTitle}>На улице</h3>
             <ProgramAccordion
               type="yard"

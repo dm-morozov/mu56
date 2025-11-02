@@ -100,7 +100,8 @@ export default function WhyUsSection() {
 
       <div className="container">
         <h2 className={styles.title}>
-          Почему <span className={styles.gradientText}>Мир Улыбок</span>?
+          Почему <span className={styles.gradientText}>Мир Улыбок</span>
+          <span className={styles.questionMark}>?</span>
         </h2>
 
         {/* Карточки */}

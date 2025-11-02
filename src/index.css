@@ -59,7 +59,7 @@ h2::after {
   width: 80px;
   height: 3px;
   background: var(--gold);
-  margin: 0.8rem auto 0;
+  margin: 1.3rem auto 0;
 }
 
 .note {

@@ -2,7 +2,6 @@
 import bookletPdf from '../../assets/booklet.pdf'
 import bookletPreview from '../../assets/preview_booklet.jpg'
 import styles from './BookletSection.module.css'
-import sharedStyles from '../../SharedStyles.module.css'
 
 export default function BookletSection() {
   const handleDownload = (e: React.MouseEvent) => {
@@ -17,26 +16,15 @@ export default function BookletSection() {
     <section id="booklet" className={styles.bookletSection}>
       <div className="container">
         <div className={styles.section}>
-          <div className={styles.content}>
-            <h2 className={sharedStyles.sectionTitle}>
-              Наши праздники круглый год
-            </h2>
-            <p className={styles.text}>
-              Мы проводим дни рождения, выпускные, корпоративы и тематические
-              праздники. Скачайте наш буклет и выберите идеальный сценарий!
-            </p>
-            <a
-              href={bookletPdf}
-              download="Мир_Улыбок_Буклет.pdf"
-              className={styles.button}
-            >
-              Скачать буклет (PDF)
-            </a>
-          </div>
+          {/* 1. ЗАГОЛОВОК */}
+          <h2 className={styles.title}>
+            Наши праздники{' '}
+            <span className={styles.gradientText}>круглый год</span>
+          </h2>
 
+          {/* 2. КАРТИНКА */}
           <div className={styles.preview}>
             <div className={styles.tilt}>
-              {/* Кликабельное изображение */}
               <button
                 onClick={handleDownload}
                 className={styles.imageButton}
@@ -50,6 +38,21 @@ export default function BookletSection() {
                 />
               </button>
             </div>
+          </div>
+
+          {/* 3. ТЕКСТ + КНОПКА */}
+          <div className={styles.description}>
+            <p className={styles.text}>
+              Мы проводим дни рождения, выпускные, корпоративы и тематические
+              праздники. Скачайте наш буклет и выберите идеальный сценарий!
+            </p>
+            <a
+              href={bookletPdf}
+              download="Мир_Улыбок_Буклет.pdf"
+              className={styles.button}
+            >
+              Скачать буклет (PDF)
+            </a>
           </div>
         </div>
       </div>

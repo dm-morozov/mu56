@@ -62,7 +62,9 @@ export default function Gallery() {
   return (
     // Применяем модульные классы, оставляем 'container' как глобальный
     <section id="gallery" className={`container ${styles.gallery}`}>
-      <h2 className={styles.title}>Наши костюмы в лицах</h2>
+      <h2 className={styles.title}>
+        Наши костюмы <span className={styles.gradientText}>в лицах</span>
+      </h2>
       <div className={styles.grid}>
         {images.map((img, i) => (
           <div key={i} className={styles.item} onClick={() => openLightbox(i)}>

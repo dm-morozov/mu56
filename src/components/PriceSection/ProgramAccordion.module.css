@@ -41,18 +41,21 @@
   }
 }
 
-/* === ОСТАЛЬНОЕ — БЕЗ ИЗМЕНЕНИЙ === */
 .accordionItem {
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
   border-radius: 18px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   box-shadow: var(--shadow-sm);
-  border: 1px solid #eee;
   transition: var(--transition);
+  z-index: 3;
+  position: relative;
 }
 
 .accordionItem:hover {
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
 .programCard {
