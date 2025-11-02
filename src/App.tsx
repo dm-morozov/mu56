@@ -9,7 +9,6 @@ import WhyUsSection from './components/WhyUsSection/WhyUsSection'
 import GuaranteeSection from './components/GuaranteeSection/GuaranteeSection'
 import BookletSection from './components/BookletSection/BookletSection'
 import PriceSection from './components/PriceSection/PriceSection'
-import PriceNote from './components/PriceNote/PriceNote'
 
 function App() {
   return (
