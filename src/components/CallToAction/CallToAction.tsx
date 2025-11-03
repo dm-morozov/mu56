@@ -23,7 +23,7 @@ export default function CallToAction({
             <img
               src={photoJpg}
               alt="Дед Мороз и Снегурочка"
-              loading="eager"
+              loading="lazy"
               width="400"
               height="600"
             />
