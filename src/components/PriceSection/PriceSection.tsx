@@ -4,7 +4,7 @@ import ProgramAccordion from './ProgramAccordion'
 import styles from './PriceSection.module.css'
 import sharedStyles from '../../SharedStyles.module.css'
 import PriceNote from '../PriceNote/PriceNote'
-import Snowflakes from '../Snowflakes/Snowflakes'
+// import Snowflakes from '../Snowflakes/Snowflakes'
 
 // --- СТАТИЧЕСКИЕ ЦВЕТА СНЕЖИНОК ДЛЯ СЕКЦИИ ЦЕН ---
 
