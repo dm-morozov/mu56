@@ -20,7 +20,7 @@ export default function PriceSection() {
       <div className={styles.sectionBg} />
 
       {/* СНЕЖИНКИ ПОЛНОСТЬЮ ПО ВЫСОТЕ СЕКЦИИ */}
-      <Snowflakes
+      {/* <Snowflakes
         density={1.2}
         minDuration={20}
         maxDuration={45}
@@ -29,7 +29,7 @@ export default function PriceSection() {
         minSize={1.0}
         maxSize={2.0}
         autoAdjustDuration={true}
-      />
+      /> */}
 
       <div className={styles.containerPrice}>
         <h2 className={styles.sectionTitle}>
