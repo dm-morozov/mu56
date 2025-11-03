@@ -129,11 +129,18 @@ export default function ProgramAccordion({ type, subtitle }: Props) {
                             key={`${prog.id}-addon-${idx}`}
                             className={styles.addonCard}
                           >
-                            <img
-                              src={addon.image}
-                              alt={`Доп. шоу: ${addon.name} — новогодний праздник в Оренбурге`}
-                              loading="lazy"
-                            />
+                            <picture>
+                              <source
+                                srcSet={addon.image.webp}
+                                type="image/webp"
+                              />
+                              <img
+                                src={addon.image.jpg}
+                                alt={`Доп. шоу: ${addon.name} — новогодний праздник в Оренбурге`}
+                                loading="lazy"
+                                className={styles.addonImage}
+                              />
+                            </picture>
                             <div className={styles.addonInfo}>
                               <strong>{addon.name}</strong>
                               <div className={styles.addonMeta}>

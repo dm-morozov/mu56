@@ -1,6 +1,7 @@
 // src/components/BookletSection/BookletSection.tsx
 import bookletPdf from '../../assets/booklet.pdf'
-import bookletPreview from '../../assets/preview_booklet.jpg'
+import previewJpg from '../../assets/preview_booklet.jpg'
+import previewWebp from '../../assets/preview_booklet.webp'
 import styles from './BookletSection.module.css'
 
 export default function BookletSection() {
@@ -31,11 +32,17 @@ export default function BookletSection() {
                 aria-label="Скачать буклет Мир Улыбок (PDF)"
                 title="Нажмите, чтобы скачать буклет"
               >
-                <img
-                  src={bookletPreview}
-                  alt="Превью буклета Мир Улыбок — детские праздники в Оренбурге"
-                  className={styles.image}
-                />
+                <picture>
+                  <source srcSet={previewWebp} type="image/webp" />
+                  <img
+                    src={previewJpg}
+                    alt="Превью буклета Мир Улыбок — детские праздники в Оренбурге"
+                    className={styles.image}
+                    loading="lazy"
+                    width="400"
+                    height="520"
+                  />
+                </picture>
               </button>
             </div>
           </div>

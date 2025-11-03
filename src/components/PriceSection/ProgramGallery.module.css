@@ -70,10 +70,7 @@
 /* === ЛАЙТБОКС — ИСПРАВЛЕННЫЙ, НО СТАРЫЙ СТИЛЬ === */
 .lightbox-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0; /* вместо top/left/width/height */
   background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
@@ -85,39 +82,40 @@
 
 .lightbox-content {
   position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 95vw; /* ↑ как в Gallery */
+  max-height: 95vh; /* ↑ как в Gallery */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .lightbox-image {
   max-width: 100%;
-  max-height: 85vh; /* ← КЛЮЧЕВОЕ ИЗМЕНЕНИЕ */
+  max-height: 80vh; /* ↑ как в Gallery */
   width: auto;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   background: #000;
 }
 
+/* Кнопки — как в Gallery */
 .lightbox-close {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -8px;
+  right: -8px;
   background: white;
-  /* Предполагается, что --gray-900, --shadow определены глобально */
-  color: var(--gray-900);
+  color: #2d3436;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,7 +123,8 @@
 }
 
 .lightbox-close:hover {
-  color: #ff6b6b;
+  background: #ff6b6b;
+  color: white;
 }
 
 .lightbox-nav {
@@ -133,19 +132,19 @@
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.8);
-  color: var(--gray-900);
+  color: #2d3436;
   border: none;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  transition: var(--transition);
+  transition: all 0.2s ease;
 }
 
 .lightbox-nav:hover {
@@ -153,23 +152,20 @@
   transform: translateY(-50%) scale(1.1);
 }
 
-.lightbox-nav.prev {
-  left: -70px;
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
 }
 
-.lightbox-nav.next {
-  right: -70px;
-}
-
+/* Счётчик */
 .lightbox-counter {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 1rem;
   color: white;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   padding: 8px 16px;
   border-radius: 30px;
   backdrop-filter: blur(8px);
@@ -178,25 +174,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  line-height: 1.4;
-  z-index: 1001;
 }
 
 /* === АДАПТИВ === */
 @media (max-width: 768px) {
+  .lightbox-nav {
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
+  }
+
   .lightbox-nav.prev {
     left: 10px;
   }
 
   .lightbox-nav.next {
     right: 10px;
-  }
-
-  .lightbox-close {
-    top: 10px;
-    right: 10px;
-    font-size: 1.8rem;
   }
 
   .lightbox-counter {
@@ -209,24 +202,28 @@
   .lightbox-image {
     max-height: 75vh;
   }
+
+  .lightbox-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    top: -10px;
+    right: -10px;
+  }
 }
 
 @media (max-width: 480px) {
   .lightbox-image {
-    max-height: 70vh;
+    max-height: 75vh;
+  }
+
+  .lightbox-counter {
+    font-size: 0.9rem;
+    padding: 6px 12px;
   }
 
   .lightbox-close {
     top: 10px;
     right: 10px;
-  }
-
-  .lightbox-counter {
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.85rem;
-    padding: 6px 12px;
-    max-width: 80vw;
   }
 }

@@ -1,6 +1,7 @@
 // src/components/CallToAction.tsx
 import { type ReactNode } from 'react'
-import photo from '../../assets/grandfather-frost-and-snow-maiden.jpg'
+import photoJpg from '../../assets/grandfather-frost-and-snow-maiden.jpg'
+import photoWebp from '../../assets/grandfather-frost-and-snow-maiden.webp'
 // 🛑 Импорт CSS-модуля
 import styles from './CallToAction.module.css'
 
@@ -17,7 +18,16 @@ export default function CallToAction({
     <section className={styles.hero}>
       {showPhoto && (
         <div className={styles.photoFrame}>
-          <img src={photo} alt="Дед Мороз и Снегурочка" />
+          <picture>
+            <source srcSet={photoWebp} type="image/webp" />
+            <img
+              src={photoJpg}
+              alt="Дед Мороз и Снегурочка"
+              loading="lazy"
+              width="400"
+              height="600"
+            />
+          </picture>
         </div>
       )}
       {/* 🛑 ПРИМЕЧАНИЕ: Вы уже используете styles.heroText. Отлично! */}

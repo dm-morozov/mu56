@@ -12,19 +12,24 @@ import {
 
 import styles from './WhyUsSection.module.css'
 
-// 📸 Замени на свои фото из assets/gallery/
-import img2 from '../../assets/gallery/2.jpg'
-// import img3 from '../../assets/gallery/3.jpg'
-import img4 from '../../assets/gallery/4.jpg'
-import img5 from '../../assets/gallery/5.jpg'
-import img6 from '../../assets/gallery/6.jpg'
+import img2jpg from '../../assets/gallery/2.jpg'
+import img2webp from '../../assets/gallery/2.webp'
+import img4jpg from '../../assets/gallery/4.jpg'
+import img4webp from '../../assets/gallery/4.webp'
+import img5jpg from '../../assets/gallery/5.jpg'
+import img5webp from '../../assets/gallery/5.webp'
+import img6jpg from '../../assets/gallery/6.jpg'
+import img6webp from '../../assets/gallery/6.webp'
 
 const sliderImages = [
-  { src: img2, alt: 'Веселый хоровод с детьми' },
-  // { src: img3, alt: 'Дед Мороз и Снегурочка на празднике - Вручение подарков' },
-  { src: img4, alt: 'Костюмы в деталях' },
-  { src: img5, alt: 'Индивидуальный подход' },
-  { src: img6, alt: 'Праздник в любом месте' },
+  { jpg: img2jpg, webp: img2webp, alt: 'Веселый хоровод с детьми' },
+  {
+    jpg: img4jpg,
+    webp: img4webp,
+    alt: 'Дед Мороз и Снегурочка на празднике - Костюмы в деталях',
+  },
+  { jpg: img5jpg, webp: img5webp, alt: 'Индивидуальный подход' },
+  { jpg: img6jpg, webp: img6webp, alt: 'Праздник в любом месте' },
 ]
 
 type Advantage = {
@@ -142,11 +147,17 @@ export default function WhyUsSection() {
         <div className={styles.slider}>
           <div className={styles.sliderWrapper}>
             <div className={styles.sliderImage}>
-              <img
-                src={sliderImages[currentSlide].src}
-                alt={sliderImages[currentSlide].alt}
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  srcSet={sliderImages[currentSlide].webp}
+                  type="image/webp"
+                />
+                <img
+                  src={sliderImages[currentSlide].jpg}
+                  alt={sliderImages[currentSlide].alt}
+                  loading="lazy"
+                />
+              </picture>
             </div>
             <div className={styles.sliderNav}>
               <button

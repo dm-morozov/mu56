@@ -1,16 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
 import logo from '../../assets/mu_logo.svg'
-import blueBall from '../../assets/header/blue-ball.png'
-import blueBallBlurred from '../../assets/header/blue-ball_blurred.png'
-import goldenBall from '../../assets/header/golden-ball.png'
-import pinkBall from '../../assets/header/pink-ball.png'
-import subtractBig from '../../assets/header/Subtract_big.png'
-import subtractSmall from '../../assets/header/Subtract_small.png'
+import blueBall_png from '../../assets/header/blue-ball.png'
+import blueBall_webp from '../../assets/header/blue-ball.webp'
+import blueBallBlurred_png from '../../assets/header/blue-ball_blurred.png'
+import blueBallBlurred_webp from '../../assets/header/blue-ball_blurred.webp'
+import goldenBall_png from '../../assets/header/golden-ball.png'
+import goldenBall_webp from '../../assets/header/golden-ball.webp'
+import pinkBall_png from '../../assets/header/pink-ball.png'
+import pinkBall_webp from '../../assets/header/pink-ball.webp'
+import subtractBig_png from '../../assets/header/Subtract_big.png'
+import subtractBig_webp from '../../assets/header/Subtract_big.webp'
+import subtractSmall_png from '../../assets/header/Subtract_small.png'
+import subtractSmall_webp from '../../assets/header/Subtract_small.webp'
 import clouds from '../../assets/header/clouds.svg'
 import styles from './Header.module.css'
 import Snowflakes from '../Snowflakes/Snowflakes'
 
-// --- СТАТИЧЕСКИЕ ПОЗИЦИИ ДЛЯ ВСЕХ ШАРОВ ---
 const STATIC_PARALLAX_POSITIONS = {
   blueBalls: [
     { left: 10, top: 15, size: 70, maxShiftX: 8, maxShiftY: 7 },
@@ -36,9 +41,7 @@ export default function Header() {
   const previousTimeRef = useRef<number | null>(null)
   const headerRef = useRef<HTMLDivElement>(null)
 
-  // Плавное обновление позиции мыши (логика без изменений)
   useEffect(() => {
-    // ... (логика handleMouseMove и animate) ...
     let currentX = 0.5
     let currentY = 0.5
     let targetX = 0.5
@@ -85,83 +88,96 @@ export default function Header() {
   } = parallaxPositions
 
   const renderParallaxElement = (
-    src: string,
+    img: { png: string; webp: string },
     positions: (typeof STATIC_PARALLAX_POSITIONS)[keyof typeof STATIC_PARALLAX_POSITIONS],
     opacity = 0.7
   ) => {
     return positions.map((pos, i) => {
       const shiftX = (0.5 - mousePercent.x) * pos.maxShiftX * 2
       const shiftY = (0.5 - mousePercent.y) * pos.maxShiftY * 2
+
       return (
-        <img
-          key={i}
-          src={src}
-          alt=""
-          // 🛑 ИСПОЛЬЗУЕМ КЛАСС ИЗ МОДУЛЯ
-          className={styles.parallaxElement}
-          style={{
-            position: 'absolute',
-            left: `${pos.left}%`,
-            top: `${pos.top}%`,
-            width: `${pos.size}px`,
-            height: 'auto',
-            opacity,
-            transform: `translate(${shiftX}px, ${shiftY}px)`,
-            transition: 'none',
-            pointerEvents: 'none',
-            filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))',
-            zIndex: 1,
-          }}
-        />
+        <picture key={i}>
+          <source srcSet={img.webp} type="image/webp" />
+          <img
+            src={img.png}
+            alt=""
+            className={styles.parallaxElement}
+            style={{
+              position: 'absolute',
+              left: `${pos.left}%`,
+              top: `${pos.top}%`,
+              width: `${pos.size}px`,
+              height: 'auto',
+              opacity,
+              transform: `translate(${shiftX}px, ${shiftY}px)`,
+              transition: 'none',
+              pointerEvents: 'none',
+              filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.1))',
+              zIndex: 1,
+            }}
+          />
+        </picture>
       )
     })
   }
 
   return (
     <>
-      {/* ФОН НА ВСЮ ШИРИНУ */}
-      {/* 🛑 ИСПОЛЬЗУЕМ styles.headerFullBg */}
       <div className={styles.headerFullBg} ref={headerRef}>
-        {/* 🛑 ИСПОЛЬЗУЕМ styles.headerGradient */}
         <div className={styles.headerGradient}></div>
-        {/* 🛑 ИСПОЛЬЗУЕМ styles.headerBackground */}
         <div className={styles.headerBackground}>
-          {renderParallaxElement(blueBall, blueBalls)}
-          {renderParallaxElement(blueBallBlurred, blurredBlueBalls, 0.5)}
-          {renderParallaxElement(goldenBall, goldenBalls)}
-          {renderParallaxElement(pinkBall, pinkBalls)}
-          {renderParallaxElement(subtractBig, subtractsBig, 0.4)}
-          {renderParallaxElement(subtractSmall, subtractsSmall, 0.4)}
+          {renderParallaxElement(
+            { png: blueBall_png, webp: blueBall_webp },
+            blueBalls
+          )}
+          {renderParallaxElement(
+            { png: blueBallBlurred_png, webp: blueBallBlurred_webp },
+            blurredBlueBalls,
+            0.5
+          )}
+          {renderParallaxElement(
+            { png: goldenBall_png, webp: goldenBall_webp },
+            goldenBalls
+          )}
+          {renderParallaxElement(
+            { png: pinkBall_png, webp: pinkBall_webp },
+            pinkBalls
+          )}
+          {renderParallaxElement(
+            { png: subtractBig_png, webp: subtractBig_webp },
+            subtractsBig,
+            0.4
+          )}
+          {renderParallaxElement(
+            { png: subtractSmall_png, webp: subtractSmall_webp },
+            subtractsSmall,
+            0.4
+          )}
         </div>
 
-        {/* 🛑 СНЕЖИНКИ — БЕЛЫЕ, НЕЖНЫЕ, С ВЕТРОМ */}
-        {/* СНЕЖИНКИ — отдельный компонент */}
         <Snowflakes
+          colors={['#ffffff', '#e0f7ff', '#b3e5ff']}
           density={1.2}
           minDuration={10}
           maxDuration={18}
           maxSnowflakes={35}
           wind={true}
+          minSize={1.0}
+          maxSize={2.0}
         />
 
-        {/* 🛑 ИСПОЛЬЗУЕМ styles.headerCloudsFull */}
         <img src={clouds} alt="" className={styles.headerCloudsFull} />
       </div>
 
-      {/* КОНТЕНТ В КОНТЕЙНЕРЕ */}
-      {/* 🛑 ИСПОЛЬЗУЕМ styles.headerEnhanced */}
       <header className={`${styles.headerEnhanced} container`}>
-        {/* 🛑 ИСПОЛЬЗУЕМ styles.headerContent */}
         <div className={styles.headerContent}>
           <img
             src={logo}
             alt="Мир Улыбок — Детские праздники"
-            // 🛑 ИСПОЛЬЗУЕМ styles.logo
             className={styles.logo}
           />
-          {/* 🛑 ИСПОЛЬЗУЕМ styles.headerText */}
           <div className={styles.headerText}>
-            {/* 🛑 ИСПОЛЬЗУЕМ styles.logoTitle */}
             <h1 className={styles.logoTitle}>Мир Улыбок</h1>
             <p>Одни из лучших аниматоров Оренбурга</p>
           </div>

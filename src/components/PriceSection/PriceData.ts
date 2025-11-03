@@ -1,28 +1,47 @@
 // src/components/PriceSection/PriceData.ts
-import dm_sn_1 from '../../assets/gallery/1.jpg'
-import dm_sn_5 from '../../assets/gallery/5.jpg'
-import azot1 from '../../assets/show_program/azot/1.jpg'
-import azot2 from '../../assets/show_program/azot/2.jpg'
-import azot3 from '../../assets/show_program/azot/3.jpg'
-import azot4 from '../../assets/show_program/azot/4.jpg'
-import azot5 from '../../assets/show_program/azot/5.jpg'
-import azot6 from '../../assets/show_program/azot/6.jpg'
-import folgaImage from '../../assets/show_program/folga/image.png'
-import vata1 from '../../assets/show_program/vata/1.jpg'
-import jbl100vt from '../../assets/equipment/jbl100vt.jpg'
-import jbl1000Vt_1 from '../../assets/equipment/jbl1000Vt_1.png'
-import jbl1000Vt_2 from '../../assets/equipment/jbl1000Vt_2.jpg'
-import microphones_1 from '../../assets/equipment/microphones_1.jpg'
-import microphones_2 from '../../assets/equipment/microphones_2.jpg'
+import dm_sn_1_jpg from '../../assets/gallery/1.jpg'
+import dm_sn_1_webp from '../../assets/gallery/1.webp'
+import dm_sn_5_jpg from '../../assets/gallery/5.jpg'
+import dm_sn_5_webp from '../../assets/gallery/5.webp'
+
+import azot1_jpg from '../../assets/show_program/azot/1.jpg'
+import azot1_webp from '../../assets/show_program/azot/1.webp'
+import azot2_jpg from '../../assets/show_program/azot/2.jpg'
+import azot2_webp from '../../assets/show_program/azot/2.webp'
+import azot3_jpg from '../../assets/show_program/azot/3.jpg'
+import azot3_webp from '../../assets/show_program/azot/3.webp'
+import azot4_jpg from '../../assets/show_program/azot/4.jpg'
+import azot4_webp from '../../assets/show_program/azot/4.webp'
+import azot5_jpg from '../../assets/show_program/azot/5.jpg'
+import azot5_webp from '../../assets/show_program/azot/5.webp'
+import azot6_jpg from '../../assets/show_program/azot/6.jpg'
+import azot6_webp from '../../assets/show_program/azot/6.webp'
+
+import folga_jpg from '../../assets/show_program/folga/image.jpg'
+import folga_webp from '../../assets/show_program/folga/image.webp'
+
+import vata1_jpg from '../../assets/show_program/vata/1.jpg'
+import vata1_webp from '../../assets/show_program/vata/1.webp'
+
+import jbl100vt_jpg from '../../assets/equipment/jbl100vt.jpg'
+import jbl100vt_webp from '../../assets/equipment/jbl100vt.webp'
+import jbl1000Vt_1_jpg from '../../assets/equipment/jbl1000Vt_1.jpg'
+import jbl1000Vt_1_webp from '../../assets/equipment/jbl1000Vt_1.webp'
+import jbl1000Vt_2_jpg from '../../assets/equipment/jbl1000Vt_2.jpg'
+import jbl1000Vt_2_webp from '../../assets/equipment/jbl1000Vt_2.webp'
+import microphones_1_jpg from '../../assets/equipment/microphones_1.jpg'
+import microphones_1_webp from '../../assets/equipment/microphones_1.webp'
+import microphones_2_jpg from '../../assets/equipment/microphones_2.jpg'
+import microphones_2_webp from '../../assets/equipment/microphones_2.webp'
 
 // === ТИПЫ ===
-export type Image = { src: string; alt: string }
+export type Image = { jpg: string; webp: string; alt: string }
 
 export type Addon = {
   name: string
   duration: string
   price: string
-  image: string
+  image: { jpg: string; webp: string }
   description: string
 }
 
@@ -60,9 +79,17 @@ export const programs: { [key: string]: Program[] } = {
         'Костюмы шикарные, но суперудобные — не сковывают движений!',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl100vt, alt: 'Колонка JBL 100 Вт' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        { jpg: jbl100vt_jpg, webp: jbl100vt_webp, alt: 'Колонка JBL 100 Вт' },
       ],
     },
     {
@@ -89,9 +116,17 @@ export const programs: { [key: string]: Program[] } = {
         'Костюмы шикарные, но суперудобные — энергия на полную!',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl100vt, alt: 'Колонка JBL 100 Вт' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        { jpg: jbl100vt_jpg, webp: jbl100vt_webp, alt: 'Колонка JBL 100 Вт' },
       ],
     },
     {
@@ -109,24 +144,56 @@ export const programs: { [key: string]: Program[] } = {
         'Новогодний праздник "Чудеса" на дом в Оренбурге ≈ 45 минут',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl100vt, alt: 'Колонка JBL 100 Вт' },
-        { src: folgaImage, alt: 'Фольгированное шоу — серебряный дождь' },
-        { src: vata1, alt: 'Шоу сладкая вата — дети крутят сами' },
-        { src: azot1, alt: 'Азотное шоу — взрыв тумана' },
-        { src: azot2, alt: 'Азотное шоу — банан-молоток' },
-        { src: azot3, alt: 'Азотное шоу — снеговик' },
-        { src: azot4, alt: 'Азотное шоу — химическое шоу' },
-        { src: azot5, alt: 'Азотное шоу — замороженный попкорн или румзики' },
-        { src: azot6, alt: 'Азотное шоу — делаем мороженое' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        { jpg: jbl100vt_jpg, webp: jbl100vt_webp, alt: 'Колонка JBL 100 Вт' },
+        {
+          jpg: folga_jpg,
+          webp: folga_webp,
+          alt: 'Фольгированное шоу — серебряный дождь',
+        },
+        {
+          jpg: vata1_jpg,
+          webp: vata1_webp,
+          alt: 'Шоу сладкая вата — дети крутят сами',
+        },
+        { jpg: azot1_jpg, webp: azot1_webp, alt: 'Азотное шоу — взрыв тумана' },
+        {
+          jpg: azot2_jpg,
+          webp: azot2_webp,
+          alt: 'Азотное шоу — банан-молоток',
+        },
+        { jpg: azot3_jpg, webp: azot3_webp, alt: 'Азотное шоу — снеговик' },
+        {
+          jpg: azot4_jpg,
+          webp: azot4_webp,
+          alt: 'Азотное шоу — химическое шоу',
+        },
+        {
+          jpg: azot5_jpg,
+          webp: azot5_webp,
+          alt: 'Азотное шоу — замороженный попкорн или румзики',
+        },
+        {
+          jpg: azot6_jpg,
+          webp: azot6_webp,
+          alt: 'Азотное шоу — делаем мороженое',
+        },
       ],
       addons: [
         {
           name: 'Ледяное дыхание',
           duration: '45 минут',
           price: '5 900 ₽',
-          image: azot1,
+          image: { jpg: azot1_jpg, webp: azot1_webp },
           description:
             'Дед Мороз и Снегурочка — ваши ведущие! Захватывающее научное приключение с жидким азотом (-196°C)! Дети увидят, как банан становится молотком, попробуют «ледяной» попкорн и научатся выпускать холодный пар, как драконы! Будем сдувать и надувать шарики, замораживать предметы и устраивать эффектный взрыв тумана! В программе много юмора, интерактива и удивительных открытий. А в финале дети сами приготовят настоящее азотное мороженое и сразу его попробуют!',
         },
@@ -134,7 +201,7 @@ export const programs: { [key: string]: Program[] } = {
           name: 'Серебряное пати',
           duration: '30 минут',
           price: '4 000 ₽',
-          image: folgaImage,
+          image: { jpg: folga_jpg, webp: folga_webp },
           description:
             'Дед Мороз и Снегурочка — ваши ведущие! Настоящий вихрь блестящих фольгированных лент! Дети будут подбрасывать, танцевать и устраивать весёлые баттлы в сверкающем дожде. Мы проведём несколько интерактивных игр, добавим весёлую музыку и создадим атмосферу настоящего праздника! Фольга безопасна, не липнет к одежде и легко убирается. Это зрелищное и динамичное шоу подарит детям море эмоций и незабываемые впечатления!',
         },
@@ -142,7 +209,7 @@ export const programs: { [key: string]: Program[] } = {
           name: 'Сладкий Вайб',
           duration: '30 минут',
           price: '3 500 ₽',
-          image: vata1,
+          image: { jpg: vata1_jpg, webp: vata1_webp },
           description:
             'Дед Мороз и Снегурочка — ваши ведущие! Это не просто сладкое угощение, а настоящее шоу! Детки сами делают себе вату под музыкальные композиции, угадывают песенки и участвуют в играх. Весёлые конкурсы и увлекательное времяпрепровождение с любимым лакомством!',
         },
@@ -163,32 +230,68 @@ export const programs: { [key: string]: Program[] } = {
         'Полный новогодний праздник на дом в Оренбурге ≈ 60 минут',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl100vt, alt: 'Колонка JBL 100 Вт' },
-        { src: azot2, alt: 'Азотное шоу — банан-молоток' },
-        { src: folgaImage, alt: 'Фольгированное шоу — конфетти' },
-        { src: vata1, alt: 'Шоу сладкая вата — дети в восторге' },
-        { src: azot1, alt: 'Азотное шоу — банан-молоток' },
-        { src: azot4, alt: 'Азотное шоу — химическое шоу' },
-        { src: azot5, alt: 'Азотное шоу — замороженный попкорн или румзики' },
-        { src: azot6, alt: 'Азотное шоу — делаем мороженое' },
-        { src: azot3, alt: 'Азотное шоу — снеговик' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        { jpg: jbl100vt_jpg, webp: jbl100vt_webp, alt: 'Колонка JBL 100 Вт' },
+        {
+          jpg: azot2_jpg,
+          webp: azot2_webp,
+          alt: 'Азотное шоу — банан-молоток',
+        },
+        {
+          jpg: folga_jpg,
+          webp: folga_webp,
+          alt: 'Фольгированное шоу — конфетти',
+        },
+        {
+          jpg: vata1_jpg,
+          webp: vata1_webp,
+          alt: 'Шоу сладкая вата — дети в восторге',
+        },
+        {
+          jpg: azot1_jpg,
+          webp: azot1_webp,
+          alt: 'Азотное шоу — банан-молоток',
+        },
+        {
+          jpg: azot4_jpg,
+          webp: azot4_webp,
+          alt: 'Азотное шоу — химическое шоу',
+        },
+        {
+          jpg: azot5_jpg,
+          webp: azot5_webp,
+          alt: 'Азотное шоу — замороженный попкорн или румзики',
+        },
+        {
+          jpg: azot6_jpg,
+          webp: azot6_webp,
+          alt: 'Азотное шоу — делаем мороженое',
+        },
+        { jpg: azot3_jpg, webp: azot3_webp, alt: 'Азотное шоу — снеговик' },
       ],
       addons: [
         {
           name: 'Ледяное дыхание',
           duration: '45 минут',
           price: '5 900 ₽',
-          image: azot1,
+          image: { jpg: azot1_jpg, webp: azot1_webp },
           description:
-            'Дед Мороз и Снегурочка — ваши ведущие! Захватывающее научное приключение с жидким азотом (-196°C)! Дети увидят, как банан становится молотком, попробуют «ледяной» попкорн и научатся выпускать холодный пар, как драконы! Будем сдувать и надувать шарики, замораживать предметы и устраивать эффектный взрыв тумана! В программе много юмора, интерактива и удивительных открытий. А в финале дети сами приготовят настоящее азотное мороженое и сразу его попробуют!',
+            'Дед Мороз и Снегурочка — ваши ведущие! Захватывающее научное приключение с жидким азотом (-196°C)! Дети увидят, как банан становится молотком, попробуют «ледяной» попкорн и научатся выпускать холодный пар, как драконы! Будем сдувать и надувать шарики, замораживать предметы и устраивать эффектный взрыв тумана! В программе много юмора, интерактива и удивительных открытий. А в финале дети сами приготовят настоящее азотное мороженое и сразу его попробают!',
         },
         {
           name: 'Серебряное пати',
           duration: '30 минут',
           price: '4 000 ₽',
-          image: folgaImage,
+          image: { jpg: folga_jpg, webp: folga_webp },
           description:
             'Дед Мороз и Снегурочка — ваши ведущие! Настоящий вихрь блестящих фольгированных лент! Дети будут подбрасывать, танцевать и устраивать весёлые баттлы в сверкающем дожде. Мы проведём несколько интерактивных игр, добавим весёлую музыку и создадим атмосферу настоящего праздника! Фольга безопасна, не липнет к одежде и легко убирается. Это зрелищное и динамичное шоу подарит детям море эмоций и незабываемые впечатления!',
         },
@@ -196,7 +299,7 @@ export const programs: { [key: string]: Program[] } = {
           name: 'Сладкий Вайб',
           duration: '30 минут',
           price: '3 500 ₽',
-          image: vata1,
+          image: { jpg: vata1_jpg, webp: vata1_webp },
           description:
             'Дед Мороз и Снегурочка — ваши ведущие! Это не просто сладкое угощение, а настоящее шоу! Детки сами делают себе вату под музыкальные композиции, угадывают песенки и участвуют в играх. Весёлые конкурсы и увлекательное времяпрепровождение с любимым лакомством!',
         },
@@ -220,12 +323,36 @@ export const programs: { [key: string]: Program[] } = {
         'Для того чтобы праздник звучал на всю мощь, идеально подойдет колонка JBL PartyBox 1000. С мощностью 1000 Вт и качественным звучанием, она создаст настоящую атмосферу для танцев и игр. В комплекте идут профессиональные микрофоны Shure, которые позволят быть услышанным на максимуме.',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl1000Vt_1, alt: 'Колонка JBL 1000 Вт' },
-        { src: jbl1000Vt_2, alt: 'Колонка JBL 1000 Вт 2' },
-        { src: microphones_1, alt: 'Микрофоны Shure 1' },
-        { src: microphones_2, alt: 'Микрофоны Shure 2' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        {
+          jpg: jbl1000Vt_1_jpg,
+          webp: jbl1000Vt_1_webp,
+          alt: 'Колонка JBL 1000 Вт',
+        },
+        {
+          jpg: jbl1000Vt_2_jpg,
+          webp: jbl1000Vt_2_webp,
+          alt: 'Колонка JBL 1000 Вт 2',
+        },
+        {
+          jpg: microphones_1_jpg,
+          webp: microphones_1_webp,
+          alt: 'Микрофоны Shure 1',
+        },
+        {
+          jpg: microphones_2_jpg,
+          webp: microphones_2_webp,
+          alt: 'Микрофоны Shure 2',
+        },
       ],
     },
     {
@@ -246,18 +373,42 @@ export const programs: { [key: string]: Program[] } = {
         'Для того чтобы праздник звучал на всю мощь, идеально подойдет колонка JBL PartyBox 1000. С мощностью 1000 Вт и качественным звучанием, она создаст настоящую атмосферу для танцев и игр. В комплекте идут профессиональные микрофоны Shure, которые позволят быть услышанным на максимуме.',
       ],
       gallery: [
-        { src: azot1, alt: 'Азотное шоу: эксперимент 1' },
-        { src: azot2, alt: 'Азотное шоу: эксперимент 2' },
-        { src: azot3, alt: 'Азотное шоу: эксперимент 3' },
-        { src: azot4, alt: 'Азотное шоу: эксперимент 4' },
-        { src: azot5, alt: 'Азотное шоу: эксперимент 5' },
-        { src: azot6, alt: 'Азотное шоу: эксперимент 6' },
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl1000Vt_1, alt: 'Колонка JBL 1000 Вт' },
-        { src: jbl1000Vt_2, alt: 'Колонка JBL 1000 Вт 2' },
-        { src: microphones_1, alt: 'Микрофоны Shure 1' },
-        { src: microphones_2, alt: 'Микрофоны Shure 2' },
+        { jpg: azot1_jpg, webp: azot1_webp, alt: 'Азотное шоу: эксперимент 1' },
+        { jpg: azot2_jpg, webp: azot2_webp, alt: 'Азотное шоу: эксперимент 2' },
+        { jpg: azot3_jpg, webp: azot3_webp, alt: 'Азотное шоу: эксперимент 3' },
+        { jpg: azot4_jpg, webp: azot4_webp, alt: 'Азотное шоу: эксперимент 4' },
+        { jpg: azot5_jpg, webp: azot5_webp, alt: 'Азотное шоу: эксперимент 5' },
+        { jpg: azot6_jpg, webp: azot6_webp, alt: 'Азотное шоу: эксперимент 6' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        {
+          jpg: jbl1000Vt_1_jpg,
+          webp: jbl1000Vt_1_webp,
+          alt: 'Колонка JBL 1000 Вт',
+        },
+        {
+          jpg: jbl1000Vt_2_jpg,
+          webp: jbl1000Vt_2_webp,
+          alt: 'Колонка JBL 1000 Вт 2',
+        },
+        {
+          jpg: microphones_1_jpg,
+          webp: microphones_1_webp,
+          alt: 'Микрофоны Shure 1',
+        },
+        {
+          jpg: microphones_2_jpg,
+          webp: microphones_2_webp,
+          alt: 'Микрофоны Shure 2',
+        },
       ],
     },
     {
@@ -278,13 +429,37 @@ export const programs: { [key: string]: Program[] } = {
         'Для того чтобы праздник звучал на всю мощь, идеально подойдет колонка JBL PartyBox 1000. С мощностью 1000 Вт и качественным звучанием, она создаст настоящую атмосферу для танцев и игр. В комплекте идут профессиональные микрофоны Shure, которые позволят быть услышанным на максимуме.',
       ],
       gallery: [
-        { src: folgaImage, alt: 'Фольгированное шоу' },
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl1000Vt_1, alt: 'Колонка JBL 1000 Вт' },
-        { src: jbl1000Vt_2, alt: 'Колонка JBL 1000 Вт 2' },
-        { src: microphones_1, alt: 'Микрофоны Shure 1' },
-        { src: microphones_2, alt: 'Микрофоны Shure 2' },
+        { jpg: folga_jpg, webp: folga_webp, alt: 'Фольгированное шоу' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        {
+          jpg: jbl1000Vt_1_jpg,
+          webp: jbl1000Vt_1_webp,
+          alt: 'Колонка JBL 1000 Вт',
+        },
+        {
+          jpg: jbl1000Vt_2_jpg,
+          webp: jbl1000Vt_2_webp,
+          alt: 'Колонка JBL 1000 Вт 2',
+        },
+        {
+          jpg: microphones_1_jpg,
+          webp: microphones_1_webp,
+          alt: 'Микрофоны Shure 1',
+        },
+        {
+          jpg: microphones_2_jpg,
+          webp: microphones_2_webp,
+          alt: 'Микрофоны Shure 2',
+        },
       ],
     },
     {
@@ -305,13 +480,37 @@ export const programs: { [key: string]: Program[] } = {
         'Для того чтобы праздник звучал на всю мощь, идеально подойдет колонка JBL PartyBox 1000. С мощностью 1000 Вт и качественным звучанием, она создаст настоящую атмосферу для танцев и игр. В комплекте идут профессиональные микрофоны Shure, которые позволят быть услышанным на максимуме.',
       ],
       gallery: [
-        { src: vata1, alt: 'Шоу Сладкая Вата' },
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl1000Vt_1, alt: 'Колонка JBL 1000 Вт' },
-        { src: jbl1000Vt_2, alt: 'Колонка JBL 1000 Вт 2' },
-        { src: microphones_1, alt: 'Микрофоны Shure 1' },
-        { src: microphones_2, alt: 'Микрофоны Shure 2' },
+        { jpg: vata1_jpg, webp: vata1_webp, alt: 'Шоу Сладкая Вата' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        {
+          jpg: jbl1000Vt_1_jpg,
+          webp: jbl1000Vt_1_webp,
+          alt: 'Колонка JBL 1000 Вт',
+        },
+        {
+          jpg: jbl1000Vt_2_jpg,
+          webp: jbl1000Vt_2_webp,
+          alt: 'Колонка JBL 1000 Вт 2',
+        },
+        {
+          jpg: microphones_1_jpg,
+          webp: microphones_1_webp,
+          alt: 'Микрофоны Shure 1',
+        },
+        {
+          jpg: microphones_2_jpg,
+          webp: microphones_2_webp,
+          alt: 'Микрофоны Shure 2',
+        },
       ],
     },
   ],
@@ -336,13 +535,37 @@ export const programs: { [key: string]: Program[] } = {
         'Для того чтобы праздник звучал на всю мощь, идеально подойдет колонка JBL PartyBox 1000. С мощностью 1000 Вт и качественным звучанием, она создаст настоящую атмосферу для танцев и игр. В комплекте идут профессиональные микрофоны Shure, которые позволят быть услышанным на максимуме.',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl1000Vt_1, alt: 'Колонка JBL 1000 Вт' },
-        { src: jbl1000Vt_2, alt: 'Колонка JBL 1000 Вт 2' },
-        { src: microphones_1, alt: 'Микрофоны Shure 1' },
-        { src: microphones_2, alt: 'Микрофоны Shure 2' },
-        { src: vata1, alt: 'Шоу Сладкая Вата' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        {
+          jpg: jbl1000Vt_1_jpg,
+          webp: jbl1000Vt_1_webp,
+          alt: 'Колонка JBL 1000 Вт',
+        },
+        {
+          jpg: jbl1000Vt_2_jpg,
+          webp: jbl1000Vt_2_webp,
+          alt: 'Колонка JBL 1000 Вт 2',
+        },
+        {
+          jpg: microphones_1_jpg,
+          webp: microphones_1_webp,
+          alt: 'Микрофоны Shure 1',
+        },
+        {
+          jpg: microphones_2_jpg,
+          webp: microphones_2_webp,
+          alt: 'Микрофоны Shure 2',
+        },
+        { jpg: vata1_jpg, webp: vata1_webp, alt: 'Шоу Сладкая Вата' },
       ],
     },
     {
@@ -367,13 +590,37 @@ export const programs: { [key: string]: Program[] } = {
         'Для того чтобы праздник звучал на всю мощь, идеально подойдет колонка JBL PartyBox 1000. С мощностью 1000 Вт и качественным звучанием, она создаст настоящую атмосферу для танцев и игр. В комплекте идут профессиональные микрофоны Shure, которые позволят быть услышанным на максимуме.',
       ],
       gallery: [
-        { src: dm_sn_1, alt: 'Дед Мороз и Снегурочка — костюм 1' },
-        { src: dm_sn_5, alt: 'Дед Мороз и Снегурочка — костюм 2' },
-        { src: jbl1000Vt_1, alt: 'Колонка JBL 1000 Вт' },
-        { src: jbl1000Vt_2, alt: 'Колонка JBL 1000 Вт 2' },
-        { src: microphones_1, alt: 'Микрофоны Shure 1' },
-        { src: microphones_2, alt: 'Микрофоны Shure 2' },
-        { src: vata1, alt: 'Шоу Сладкая Вата' },
+        {
+          jpg: dm_sn_1_jpg,
+          webp: dm_sn_1_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 1',
+        },
+        {
+          jpg: dm_sn_5_jpg,
+          webp: dm_sn_5_webp,
+          alt: 'Дед Мороз и Снегурочка — костюм 2',
+        },
+        {
+          jpg: jbl1000Vt_1_jpg,
+          webp: jbl1000Vt_1_webp,
+          alt: 'Колонка JBL 1000 Вт',
+        },
+        {
+          jpg: jbl1000Vt_2_jpg,
+          webp: jbl1000Vt_2_webp,
+          alt: 'Колонка JBL 1000 Вт 2',
+        },
+        {
+          jpg: microphones_1_jpg,
+          webp: microphones_1_webp,
+          alt: 'Микрофоны Shure 1',
+        },
+        {
+          jpg: microphones_2_jpg,
+          webp: microphones_2_webp,
+          alt: 'Микрофоны Shure 2',
+        },
+        { jpg: vata1_jpg, webp: vata1_webp, alt: 'Шоу Сладкая Вата' },
       ],
     },
   ],

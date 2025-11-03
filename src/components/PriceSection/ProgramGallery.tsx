@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import styles from './ProgramGallery.module.css'
 
-type Image = { src: string; alt: string }
+type Image = { jpg: string; webp: string; alt: string }
 
 type ProgramGalleryProps = {
   images: Image[]
@@ -44,7 +44,15 @@ export default function ProgramGallery({ images }: ProgramGalleryProps) {
             className={styles['program-gallery-item']}
             onClick={() => openLightbox(i)}
           >
-            <img src={img.src} alt={img.alt} loading="lazy" />
+            <picture>
+              <source srcSet={img.webp} type="image/webp" />
+              <img
+                src={img.jpg}
+                alt={img.alt}
+                loading="lazy"
+                className={styles['gallery-thumb']}
+              />
+            </picture>
           </div>
         ))}
       </div>
@@ -79,11 +87,14 @@ export default function ProgramGallery({ images }: ProgramGalleryProps) {
               </>
             )}
 
-            <img
-              src={images[lightboxIndex].src}
-              alt={images[lightboxIndex].alt}
-              className={styles['lightbox-image']}
-            />
+            <picture>
+              <source srcSet={images[lightboxIndex].webp} type="image/webp" />
+              <img
+                src={images[lightboxIndex].jpg}
+                alt={images[lightboxIndex].alt}
+                className={styles['lightbox-image']}
+              />
+            </picture>
 
             {/* Счётчик + подпись */}
             <div className={styles['lightbox-counter']}>
