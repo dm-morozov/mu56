@@ -1,63 +1,15 @@
 // src/components/PriceSection/PriceSection.tsx
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import ProgramAccordion from './ProgramAccordion'
 import styles from './PriceSection.module.css'
 import sharedStyles from '../../SharedStyles.module.css'
 import PriceNote from '../PriceNote/PriceNote'
+import Snowflakes from '../Snowflakes/Snowflakes'
+
+// --- СТАТИЧЕСКИЕ ЦВЕТА СНЕЖИНОК ДЛЯ СЕКЦИИ ЦЕН ---
 
 export default function PriceSection() {
   const [filter, setFilter] = useState<'all' | 'home' | 'class' | 'yard'>('all')
-  const snowflakesRef = useRef<HTMLDivElement>(null)
-
-  // === СНЕЖИНКИ — СРАЗУ В СЕКЦИИ, БЕЗ ЗАДЕРЖКИ ===
-  useEffect(() => {
-    if (!snowflakesRef.current) return
-
-    const container = document.createElement('div')
-    container.className = styles.snowflakesContainer
-    snowflakesRef.current.appendChild(container)
-
-    const snowflakeIcons = ['❄', '❅', '❆', '✻', '✼', '❉']
-    const snowflakeColors = ['#ffffff', '#e0f7ff', '#b3e5ff', '#87cefa']
-
-    const createSnowflake = () => {
-      const flake = document.createElement('div')
-      flake.className = styles.snowflake
-
-      flake.innerHTML =
-        snowflakeIcons[Math.floor(Math.random() * snowflakeIcons.length)]
-      flake.style.color =
-        snowflakeColors[Math.floor(Math.random() * snowflakeColors.length)]
-      flake.style.left = `${Math.random() * 100}%`
-
-      // СКОРОСТЬ: 6–12 сек
-      flake.style.animationDuration = `${Math.random() * 25 + 50}s`
-
-      // ПРОЗРАЧНОСТЬ: 0.6–1.0
-      flake.style.opacity = (Math.random() * 0.4 + 0.6).toFixed(2)
-
-      // РАЗМЕР: 0.7–1.6em
-      const size = Math.random() * 0.9 + 0.7
-      flake.style.fontSize = `${size}em`
-
-      // КЛЮЧ: СЛУЧАЙНЫЙ СТАРТ ПО ВЫСОТЕ (0% – 30%)
-      const startPos = Math.random() * 30 // от 0% до 30% высоты секции
-      flake.style.top = `-${startPos}%`
-
-      container.appendChild(flake)
-
-      const duration = parseFloat(flake.style.animationDuration) * 1000 + 1000
-      setTimeout(() => flake.remove(), duration)
-    }
-
-    const interval = setInterval(createSnowflake, Math.random() * 400 + 300)
-    createSnowflake()
-
-    return () => {
-      clearInterval(interval)
-      container.remove()
-    }
-  }, [])
 
   return (
     <section
@@ -65,8 +17,19 @@ export default function PriceSection() {
       className={styles.priceSection}
       aria-label="Цены на детские праздники с Дедом Морозом и Снегурочкой"
     >
-      <div className={styles.sectionBg}></div>
-      <div ref={snowflakesRef} className={styles.snowflakesWrapper}></div>
+      <div className={styles.sectionBg} />
+
+      {/* СНЕЖИНКИ ПОЛНОСТЬЮ ПО ВЫСОТЕ СЕКЦИИ */}
+      <Snowflakes
+        density={1.2}
+        minDuration={20}
+        maxDuration={45}
+        maxSnowflakes={60}
+        wind={true}
+        minSize={1.0}
+        maxSize={2.0}
+        autoAdjustDuration={true}
+      />
 
       <div className={styles.containerPrice}>
         <h2 className={styles.sectionTitle}>
@@ -111,7 +74,7 @@ export default function PriceSection() {
         </div>
 
         {(filter === 'all' || filter === 'home') && (
-          <div className={styles.programSection} data-type="home">
+          <div key="home" className={styles.programSection} data-type="home">
             <h3 className={sharedStyles.sectionTitle}>Домашний Праздник</h3>
             <ProgramAccordion
               type="home"
@@ -121,7 +84,7 @@ export default function PriceSection() {
         )}
 
         {(filter === 'all' || filter === 'class') && (
-          <div className={styles.programSection} data-type="class">
+          <div key="class" className={styles.programSection} data-type="class">
             <h3 className={sharedStyles.sectionTitle}>
               Для классов и детских садов
             </h3>
@@ -133,7 +96,7 @@ export default function PriceSection() {
         )}
 
         {(filter === 'all' || filter === 'yard') && (
-          <div className={styles.programSection} data-type="yard">
+          <div key="yard" className={styles.programSection} data-type="yard">
             <h3 className={sharedStyles.sectionTitle}>На улице</h3>
             <ProgramAccordion
               type="yard"
@@ -141,6 +104,7 @@ export default function PriceSection() {
             />
           </div>
         )}
+
         <PriceNote />
       </div>
     </section>

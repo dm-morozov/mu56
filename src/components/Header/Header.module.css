@@ -75,7 +75,7 @@
 .logoTitle {
   font-family: 'Marvin Round', 'Comfortaa', cursive;
   font-weight: normal;
-  font-size: 2.1rem;
+  font-size: 1.9rem;
   color: #ffffff;
   margin-bottom: 0.6rem;
   line-height: 1.1;
@@ -115,43 +115,6 @@
 /* === ПАРАЛЛАКС === */
 .parallaxElement {
   will-change: transform;
-}
-
-/* === СНЕЖИНКИ === */
-.snowflakesHeader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.snowflake {
-  position: absolute;
-  font-size: 1.2em;
-  animation: fall-header linear forwards;
-  user-select: none;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
-  will-change: transform, opacity;
-}
-
-@keyframes fall-header {
-  0% {
-    transform: translateY(-15vh) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50vh) translateX(35px);
-  }
-  100% {
-    transform: translateY(120vh) translateX(-25px);
-    opacity: 0;
-  }
 }
 
 /* === ПЛАНШЕТЫ (481px – 767px) === */

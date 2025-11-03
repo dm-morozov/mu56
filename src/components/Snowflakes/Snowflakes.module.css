@@ -1,0 +1,42 @@
+/* src/components/Snowflakes/Snowflakes.module.css */
+.snowflakesContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -50px; /* старт выше контейнера */
+  animation: fall var(--duration, 10s) linear forwards,
+    shimmer 2s ease-in-out infinite;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.18));
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.85);
+  will-change: transform;
+  contain: layout style paint; /* ← ИЗОЛИРУЕТ ПЕРЕРИСОВКУ */
+  transform: translateZ(0); /* ← GPU-ускорение */
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(var(--fall-distance, 120vh))
+      translateX(var(--wind-shift, 0px)) rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}

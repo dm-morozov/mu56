@@ -7,9 +7,8 @@ import pinkBall from '../../assets/header/pink-ball.png'
 import subtractBig from '../../assets/header/Subtract_big.png'
 import subtractSmall from '../../assets/header/Subtract_small.png'
 import clouds from '../../assets/header/clouds.svg'
-
-// 🛑 ИМПОРТ CSS-МОДУЛЕЙ
 import styles from './Header.module.css'
+import Snowflakes from '../Snowflakes/Snowflakes'
 
 // --- СТАТИЧЕСКИЕ ПОЗИЦИИ ДЛЯ ВСЕХ ШАРОВ ---
 const STATIC_PARALLAX_POSITIONS = {
@@ -36,49 +35,6 @@ export default function Header() {
   const requestRef = useRef<number | null>(null)
   const previousTimeRef = useRef<number | null>(null)
   const headerRef = useRef<HTMLDivElement>(null)
-
-  // 🛑 НОВЫЙ РЕФ ДЛЯ КОНТЕЙНЕРА СНЕЖИНОК
-  const snowflakesContainerRef = useRef<HTMLDivElement>(null)
-
-  // --- ЛОГИКА СНЕЖИНОК ПЕРЕНЕСЕНА В ХЕДЕР ---
-  useEffect(() => {
-    const container = snowflakesContainerRef.current
-    if (!container) return
-
-    const snowflakeIcons = ['❄', '❅', '❆', '✻', '✼', '❉']
-    const snowflakeColors = ['#ffffff', '#e0f7ff', '#b3e5ff', '#87cefa']
-
-    const createSnowflake = () => {
-      const flake = document.createElement('div')
-      flake.className = styles.snowflake
-
-      flake.innerHTML =
-        snowflakeIcons[Math.floor(Math.random() * snowflakeIcons.length)]
-
-      flake.style.color =
-        snowflakeColors[Math.floor(Math.random() * snowflakeColors.length)]
-
-      flake.style.left = `${Math.random() * 100}%`
-      flake.style.animationDuration = `${Math.random() * 6 + 6}s`
-      flake.style.opacity = (Math.random() * 0.4 + 0.6).toFixed(2)
-      const size = Math.random() * 0.9 + 0.7
-      flake.style.fontSize = `${size}em`
-
-      container.appendChild(flake)
-
-      const duration = parseFloat(flake.style.animationDuration) * 1000 + 1000
-      setTimeout(() => flake.remove(), duration)
-    }
-
-    const interval = setInterval(createSnowflake, Math.random() * 400 + 300)
-    createSnowflake()
-
-    return () => {
-      clearInterval(interval)
-      // container.remove() - не нужно, React удалит элемент вместе с компонентом
-    }
-  }, [])
-  // --- КОНЕЦ ЛОГИКИ СНЕЖИНОК ---
 
   // Плавное обновление позиции мыши (логика без изменений)
   useEffect(() => {
@@ -178,11 +134,15 @@ export default function Header() {
           {renderParallaxElement(subtractSmall, subtractsSmall, 0.4)}
         </div>
 
-        {/* 🛑 КОНТЕЙНЕР ДЛЯ СНЕЖИНОК */}
-        {/* 🛑 ИСПОЛЬЗУЕМ styles.snowflakesHeader и snowflakesContainerRef */}
-        <div className={styles.snowflakesHeader} ref={snowflakesContainerRef}>
-          {/* Здесь будут генерироваться снежинки */}
-        </div>
+        {/* 🛑 СНЕЖИНКИ — БЕЛЫЕ, НЕЖНЫЕ, С ВЕТРОМ */}
+        {/* СНЕЖИНКИ — отдельный компонент */}
+        <Snowflakes
+          density={1.2}
+          minDuration={10}
+          maxDuration={18}
+          maxSnowflakes={35}
+          wind={true}
+        />
 
         {/* 🛑 ИСПОЛЬЗУЕМ styles.headerCloudsFull */}
         <img src={clouds} alt="" className={styles.headerCloudsFull} />
