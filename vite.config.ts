@@ -1,11 +1,12 @@
-// vite.config.ts
+// vite.config.ts — ГОТОВО!
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 
 export default defineConfig({
-  base: '/',
+  base: '/', // или '/твой-репозиторий/'
   plugins: [react()],
+  assetsInclude: ['**/*.pdf', '**/*.svg', '**/*.jpg', '**/*.png', '**/*.webp'],
 
   build: {
     rollupOptions: {
@@ -14,27 +15,33 @@ export default defineConfig({
           const fileName = assetInfo.names?.[0] || ''
           if (!fileName) return 'assets/[hash][extname]'
 
-          const ext = path.extname(fileName).toLowerCase()
+          const ext = path.extname(fileName).slice(1)
 
-          // Для статики — иммутабельные имена с хешем
-          if (/\.(png|jpg|jpeg|webp|svg|woff2|woff|ttf|pdf)$/.test(ext)) {
-            return 'assets/[name].[hash][extname]'
-          }
-          if (ext === '.css') {
+          if (ext === 'css') return 'assets/[name].[hash][extname]'
+          if (
+            [
+              'png',
+              'jpg',
+              'jpeg',
+              'webp',
+              'svg',
+              'woff2',
+              'woff',
+              'ttf',
+              'pdf',
+            ].includes(ext)
+          ) {
             return 'assets/[name].[hash][extname]'
           }
           return 'assets/[name].[hash][extname]'
         },
-        chunkFileNames: 'assets/[name].[hash].js',
-        entryFileNames: 'assets/[name].[hash].js',
       },
     },
   },
 
-  // КЛЮЧЕВОЕ: только для preview (продакшен-симуляция)
-  preview: {
+  server: {
     headers: {
-      'Cache-Control': 'public, max-age=31536000, immutable',
+      'Cache-Control': 'public, max-age=0, must-revalidate',
     },
   },
 })
