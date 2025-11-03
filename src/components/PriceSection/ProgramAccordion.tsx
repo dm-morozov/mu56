@@ -1,5 +1,5 @@
 // src/components/PriceSection/ProgramAccordion.tsx
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import ProgramGallery from './ProgramGallery'
 import styles from './ProgramAccordion.module.css'
 import sharedStyles from '../../SharedStyles.module.css'
@@ -22,6 +22,7 @@ type Props = { type: 'home' | 'class' | 'yard'; subtitle: string }
 
 export default function ProgramAccordion({ type, subtitle }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]) // массив ref'ов для карточек
 
   // Мемоизируем данные с иконками и стабильными ID
   const data: Program[] = useMemo(() => {
@@ -56,6 +57,9 @@ export default function ProgramAccordion({ type, subtitle }: Props) {
           return (
             <div key={prog.id} className={styles.accordionItem}>
               <div
+                ref={(el) => {
+                  cardRefs.current[i] = el
+                }}
                 className={styles.programCard}
                 onClick={() => handleToggle(i)}
               >
@@ -154,7 +158,20 @@ export default function ProgramAccordion({ type, subtitle }: Props) {
                       className={`${styles.toggleButton} ${styles.bottom}`}
                       onClick={(e) => {
                         e.stopPropagation()
-                        setOpenIndex(null)
+                        setOpenIndex(null) // закрываем
+
+                        // Ждём, пока React закроет аккордеон и обновит DOM
+                        requestAnimationFrame(() => {
+                          const el = cardRefs.current[i]
+                          if (el) {
+                            const yOffset = -100 // отступ сверху (под шапку)
+                            const y =
+                              el.getBoundingClientRect().top +
+                              window.pageYOffset +
+                              yOffset
+                            window.scrollTo({ top: y, behavior: 'smooth' })
+                          }
+                        })
                       }}
                       type="button"
                     >
