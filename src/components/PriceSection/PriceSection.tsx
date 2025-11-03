@@ -4,6 +4,7 @@ import ProgramAccordion from './ProgramAccordion'
 import styles from './PriceSection.module.css'
 import sharedStyles from '../../SharedStyles.module.css'
 import PriceNote from '../PriceNote/PriceNote'
+import Snowflakes from '../Snowflakes/Snowflakes'
 
 export default function PriceSection() {
   const [filter, setFilter] = useState<'all' | 'home' | 'class' | 'yard'>('all')
@@ -20,6 +21,18 @@ export default function PriceSection() {
       aria-label="Цены на детские праздники с Дедом Морозом и Снегурочкой"
     >
       <div className={styles.sectionBg} />
+
+      {/* СНЕЖИНКИ ПОЛНОСТЬЮ ПО ВЫСОТЕ СЕКЦИИ */}
+      <Snowflakes
+        density={1.2}
+        minDuration={20}
+        maxDuration={45}
+        maxSnowflakes={60}
+        wind={true}
+        minSize={1.0}
+        maxSize={2.0}
+        autoAdjustDuration={true}
+      />
 
       <div className={styles.containerPrice}>
         <h2 className={styles.sectionTitle}>
