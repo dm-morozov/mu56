@@ -4,9 +4,10 @@
 .priceSection {
   position: relative;
   padding: 3rem 0;
-  /* overflow: hidden; */
-  /* min-height: 600px; */
   z-index: 0;
+  /* Оптимизация композитинга */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .containerPrice {
@@ -23,6 +24,8 @@
   opacity: 0.32;
   z-index: -1;
   animation: pulse 12s ease-in-out infinite;
+  /* Оптимизация анимации */
+  will-change: opacity;
 }
 
 /* === ФИЛЬТРЫ === */
@@ -47,6 +50,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* Оптимизация */
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .filterTab:hover {
@@ -63,15 +69,36 @@
 /* === ПРОГРАММЫ === */
 .programSection {
   margin-bottom: 4rem;
-  padding: 2rem 1rem; /* чуть больше воздуха */
+  padding: 2rem 1rem;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.12); /* почти прозрачный */
-  backdrop-filter: blur(10px); /* сильный блюр */
-  -webkit-backdrop-filter: blur(10px); /* для Safari */
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* УБИРАЕМ backdrop-filter - основной источник проблем */
+  /* background: rgba(255, 255, 255, 0.12); */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
+
+  /* Используем просто белый полупрозрачный фон */
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
   z-index: 2;
+  /* Оптимизация */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Плавное появление вместо резкого */
+  animation: fadeInSection 0.4s ease-out;
+}
+
+/* Анимация появления секций */
+@keyframes fadeInSection {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .programSection[data-type='home'] {
@@ -95,15 +122,13 @@
   color: #2d3436;
   line-height: 1.2;
   max-width: 900px;
-
-  /* opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease forwards; */
-
-  opacity: 1; /* <-- УСТАНОВЛЕНО В 1, ЧТОБЫ БЫЛ ВИДИМ */
-  transform: translateY(0); /* <-- УСТАНОВЛЕНО В 0, ЧТОБЫ БЫЛ НА МЕСТЕ */
+  /* Статичный - без анимации */
+  opacity: 1;
+  transform: translateY(0);
   position: relative;
   z-index: 3;
+  /* Предотвращаем layout shift */
+  contain: layout;
 }
 
 .gradientText {
@@ -113,6 +138,8 @@
   background-clip: text;
   font-weight: 800;
   font-size: 1.1em;
+  /* Предотвращаем перерисовку градиента */
+  display: inline-block;
 }
 
 .questionMark {
@@ -123,6 +150,7 @@
   font-size: 1.2em;
   font-weight: 700;
   margin-left: 6px;
+  display: inline-block;
 }
 
 /* === АДАПТИВ === */
@@ -142,7 +170,7 @@
 
 @media (max-width: 480px) {
   .programSection {
-    min-height: 180px;
+    /* min-height убран - может вызывать проблемы */
   }
 
   .containerPrice {
@@ -189,11 +217,3 @@
     opacity: 0.4;
   }
 }
-
-/* Анимация появления */
-/* @keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  } 
-}*/

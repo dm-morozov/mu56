@@ -1,15 +1,17 @@
 // src/components/PriceSection/PriceSection.tsx
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import ProgramAccordion from './ProgramAccordion'
 import styles from './PriceSection.module.css'
 import sharedStyles from '../../SharedStyles.module.css'
 import PriceNote from '../PriceNote/PriceNote'
-// import Snowflakes from '../Snowflakes/Snowflakes'
-
-// --- СТАТИЧЕСКИЕ ЦВЕТА СНЕЖИНОК ДЛЯ СЕКЦИИ ЦЕН ---
 
 export default function PriceSection() {
   const [filter, setFilter] = useState<'all' | 'home' | 'class' | 'yard'>('all')
+
+  // Мемоизируем обработчик для предотвращения лишних ререндеров
+  const handleFilterChange = useCallback((newFilter: typeof filter) => {
+    setFilter(newFilter)
+  }, [])
 
   return (
     <section
@@ -18,18 +20,6 @@ export default function PriceSection() {
       aria-label="Цены на детские праздники с Дедом Морозом и Снегурочкой"
     >
       <div className={styles.sectionBg} />
-
-      {/* СНЕЖИНКИ ПОЛНОСТЬЮ ПО ВЫСОТЕ СЕКЦИИ */}
-      {/* <Snowflakes
-        density={1.2}
-        minDuration={20}
-        maxDuration={45}
-        maxSnowflakes={60}
-        wind={true}
-        minSize={1.0}
-        maxSize={2.0}
-        autoAdjustDuration={true}
-      /> */}
 
       <div className={styles.containerPrice}>
         <h2 className={styles.sectionTitle}>
@@ -43,7 +33,9 @@ export default function PriceSection() {
             className={`${styles.filterTab} ${
               filter === 'home' ? styles.active : ''
             }`}
-            onClick={() => setFilter('home')}
+            onClick={() => handleFilterChange('home')}
+            type="button"
+            aria-pressed={filter === 'home'}
           >
             Домашний
           </button>
@@ -51,7 +43,9 @@ export default function PriceSection() {
             className={`${styles.filterTab} ${
               filter === 'class' ? styles.active : ''
             }`}
-            onClick={() => setFilter('class')}
+            onClick={() => handleFilterChange('class')}
+            type="button"
+            aria-pressed={filter === 'class'}
           >
             Школа / Сад
           </button>
@@ -59,7 +53,9 @@ export default function PriceSection() {
             className={`${styles.filterTab} ${
               filter === 'yard' ? styles.active : ''
             }`}
-            onClick={() => setFilter('yard')}
+            onClick={() => handleFilterChange('yard')}
+            type="button"
+            aria-pressed={filter === 'yard'}
           >
             На улице
           </button>
@@ -67,7 +63,9 @@ export default function PriceSection() {
             className={`${styles.filterTab} ${
               filter === 'all' ? styles.active : ''
             }`}
-            onClick={() => setFilter('all')}
+            onClick={() => handleFilterChange('all')}
+            type="button"
+            aria-pressed={filter === 'all'}
           >
             Все
           </button>
