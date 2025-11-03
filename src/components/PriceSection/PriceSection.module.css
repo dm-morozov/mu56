@@ -131,9 +131,13 @@
   color: #2d3436;
   line-height: 1.2;
   max-width: 900px;
-  opacity: 0;
+
+  /* opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.8s ease forwards;
+  animation: fadeInUp 0.8s ease forwards; */
+
+  opacity: 1; /* <-- УСТАНОВЛЕНО В 1, ЧТОБЫ БЫЛ ВИДИМ */
+  transform: translateY(0); /* <-- УСТАНОВЛЕНО В 0, ЧТОБЫ БЫЛ НА МЕСТЕ */
   position: relative;
   z-index: 3;
 }
@@ -219,9 +223,9 @@
 }
 
 /* Анимация появления */
-@keyframes fadeInUp {
+/* @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
+  } 
+}*/
