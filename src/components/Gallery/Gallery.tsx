@@ -1,8 +1,8 @@
 // src/components/Gallery/Gallery.tsx
 import { useState } from 'react'
-import styles from './Gallery.module.css' // Импорт модульных стилей
-// Импорты изображений не меняются, но пути должны быть относительно App.tsx
-// или настроены в сборщике (если пути были корректны, оставляем как есть)
+import styles from './Gallery.module.css'
+
+// === ПОЛНЫЕ ИЗОБРАЖЕНИЯ (для лайтбокса) ===
 import img1jpg from '../../assets/gallery/1.jpg'
 import img1webp from '../../assets/gallery/1.webp'
 import img2jpg from '../../assets/gallery/2.jpg'
@@ -16,33 +16,69 @@ import img5webp from '../../assets/gallery/5.webp'
 import img6jpg from '../../assets/gallery/6.jpg'
 import img6webp from '../../assets/gallery/6.webp'
 
+// === ПРЕВЬЮ (для галереи) ===
+import preview1webp from '../../assets/gallery/preview/1.webp'
+import preview2webp from '../../assets/gallery/preview/2.webp'
+import preview3webp from '../../assets/gallery/preview/3.webp'
+import preview4webp from '../../assets/gallery/preview/4.webp'
+import preview5webp from '../../assets/gallery/preview/5.webp'
+import preview6webp from '../../assets/gallery/preview/6.webp'
+import preview1jpg from '../../assets/gallery/preview/1.jpg'
+import preview2jpg from '../../assets/gallery/preview/2.jpg'
+import preview3jpg from '../../assets/gallery/preview/3.jpg'
+import preview4jpg from '../../assets/gallery/preview/4.jpg'
+import preview5jpg from '../../assets/gallery/preview/5.jpg'
+import preview6jpg from '../../assets/gallery/preview/6.jpg'
+
 interface Img {
-  jpg: string
-  webp: string
+  previewWebp: string
+  previewJpg: string
+  fullWebp: string
+  fullJpg: string
   alt: string
 }
 
 const images: Img[] = [
   {
-    jpg: img1jpg,
-    webp: img1webp,
+    previewWebp: preview1webp,
+    previewJpg: preview1jpg,
+    fullWebp: img1webp,
+    fullJpg: img1jpg,
     alt: 'Дед Мороз и Снегурочка в роскошных костюмах…',
   },
   {
-    jpg: img2jpg,
-    webp: img2webp,
+    previewWebp: preview2webp,
+    previewJpg: preview2jpg,
+    fullWebp: img2webp,
+    fullJpg: img2jpg,
     alt: 'Актеры Дед Мороз и Снегурочка проводят хоровод…',
   },
-  { jpg: img3jpg, webp: img3webp, alt: 'Вручение подарков детям…' },
-  { jpg: img4jpg, webp: img4webp, alt: 'Крупный план: качественные костюмы…' },
   {
-    jpg: img5jpg,
-    webp: img5webp,
+    previewWebp: preview3webp,
+    previewJpg: preview3jpg,
+    fullWebp: img3webp,
+    fullJpg: img3jpg,
+    alt: 'Вручение подарков детям…',
+  },
+  {
+    previewWebp: preview4webp,
+    previewJpg: preview4jpg,
+    fullWebp: img4webp,
+    fullJpg: img4jpg,
+    alt: 'Крупный план: качественные костюмы…',
+  },
+  {
+    previewWebp: preview5webp,
+    previewJpg: preview5jpg,
+    fullWebp: img5webp,
+    fullJpg: img5jpg,
     alt: 'Дед Мороз и Снегурочка общаются с ребенком…',
   },
   {
-    jpg: img6jpg,
-    webp: img6webp,
+    previewWebp: preview6webp,
+    previewJpg: preview6jpg,
+    fullWebp: img6webp,
+    fullJpg: img6jpg,
     alt: 'Игровой момент: Дед Мороз и Снегурочка в полный рост…',
   },
 ]
@@ -70,28 +106,31 @@ export default function Gallery() {
   }
 
   return (
-    // Применяем модульные классы, оставляем 'container' как глобальный
     <section id="gallery" className={`container ${styles.gallery}`}>
       <h2 className={styles.title}>
         Наши костюмы <span className={styles.gradientText}>в лицах</span>
       </h2>
+
+      {/* === ГАЛЕРЕЯ (превью) === */}
       <div className={styles.grid}>
         {images.map((img, i) => (
           <div key={i} className={styles.item} onClick={() => openLightbox(i)}>
             <picture>
-              <source srcSet={img.webp} type="image/webp" />
+              <source srcSet={img.previewWebp} type="image/webp" />
               <img
-                src={img.jpg}
+                src={img.previewJpg}
                 alt={img.alt}
                 loading="lazy"
                 className={styles.thumbnail}
+                width="300"
+                height="300"
               />
             </picture>
           </div>
         ))}
       </div>
 
-      {/* === ЛАЙТБОКС === */}
+      {/* === ЛАЙТБОКС (полные) === */}
       {lightboxIndex !== null && (
         <div className={styles.lightboxOverlay} onClick={closeLightbox}>
           <div
@@ -99,27 +138,31 @@ export default function Gallery() {
             onClick={(e) => e.stopPropagation()}
           >
             <button className={styles.lightboxClose} onClick={closeLightbox}>
-              &times; {/* Используем символ, чтобы избежать конфликта */}
+              ×
             </button>
             <button
               className={`${styles.lightboxNav} ${styles.prev}`}
               onClick={prevImage}
             >
-              &#10094; {/* Стрелка влево */}
+              ←
             </button>
             <button
               className={`${styles.lightboxNav} ${styles.next}`}
               onClick={nextImage}
             >
-              &#10095; {/* Стрелка вправо */}
+              →
             </button>
 
             <picture>
-              <source srcSet={images[lightboxIndex].webp} type="image/webp" />
+              <source
+                srcSet={images[lightboxIndex].fullWebp}
+                type="image/webp"
+              />
               <img
-                src={images[lightboxIndex].jpg}
+                src={images[lightboxIndex].fullJpg}
                 alt={images[lightboxIndex].alt}
                 className={styles.lightboxImage}
+                loading="lazy"
               />
             </picture>
 
