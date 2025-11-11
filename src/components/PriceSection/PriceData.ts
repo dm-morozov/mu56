@@ -310,9 +310,9 @@ export const programs: { [key: string]: Program[] } = {
     {
       title: 'Базовая программа',
       duration: '≈ 60 минут',
-      price: '10 000 ₽',
+      price: '8 000 ₽',
       items: [
-        { name: 'Дед Мороз и Снегурочка', price: '8 000 ₽' },
+        { name: 'Дед Мороз и Снегурочка', price: '6 000 ₽' },
         { name: 'Колонка JBL 1000 Вт.', price: '2 000 ₽' },
         { name: 'Микрофоны Shure', price: 'включено' },
       ],
@@ -358,9 +358,9 @@ export const programs: { [key: string]: Program[] } = {
     {
       title: 'Ледяное дыхание',
       duration: '≈ 105 минут',
-      price: '17 000 ₽',
+      price: '15 000 ₽',
       items: [
-        { name: 'Дед Мороз и Снегурочка', price: '8 000 ₽' },
+        { name: 'Дед Мороз и Снегурочка', price: '6 000 ₽' },
         { name: 'Азотное шоу с мороженным', price: '7 000 ₽' },
         { name: 'Колонка JBL 1000 Вт.', price: '2 000 ₽' },
         { name: 'Микрофоны Shure', price: 'включено' },
@@ -414,9 +414,9 @@ export const programs: { [key: string]: Program[] } = {
     {
       title: 'Серебряное пати',
       duration: '≈ 90 минут',
-      price: '16 200 ₽',
+      price: '14 200 ₽',
       items: [
-        { name: 'Дед Мороз и Снегурочка', price: '8 000 ₽' },
+        { name: 'Дед Мороз и Снегурочка', price: '6 000 ₽' },
         { name: 'Фольгированное шоу', price: '6 200 ₽' },
         { name: 'Колонка JBL 1000 Вт.', price: '2 000 ₽' },
         { name: 'Микрофоны Shure', price: 'включено' },
@@ -465,9 +465,9 @@ export const programs: { [key: string]: Program[] } = {
     {
       title: 'Сладкий Вайб',
       duration: '≈ 90 минут',
-      price: '14 500 ₽',
+      price: '12 500 ₽',
       items: [
-        { name: 'Дед Мороз и Снегурочка', price: '8 000 ₽' },
+        { name: 'Дед Мороз и Снегурочка', price: '6 000 ₽' },
         { name: 'Шоу "Сладкая Вата"', price: '4 500 ₽' },
         { name: 'Колонка JBL 1000 Вт.', price: '2 000 ₽' },
         { name: 'Микрофоны Shure', price: 'включено' },
@@ -516,7 +516,7 @@ export const programs: { [key: string]: Program[] } = {
   ],
   yard: [
     {
-      title: 'До 12 детей',
+      title: 'До 15 детей',
       duration: '≈ 60 минут',
       price: '8 000 ₽',
       items: [
