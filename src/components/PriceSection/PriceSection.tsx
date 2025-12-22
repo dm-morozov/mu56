@@ -1,13 +1,13 @@
 // src/components/PriceSection/PriceSection.tsx
-import { useState, useCallback } from 'react'
-import ProgramAccordion from './ProgramAccordion'
-import styles from './PriceSection.module.css'
+import { useCallback, useState } from 'react'
 import sharedStyles from '../../SharedStyles.module.css'
 import PriceNote from '../PriceNote/PriceNote'
 import Snowflakes from '../Snowflakes/Snowflakes'
+import styles from './PriceSection.module.css'
+import ProgramAccordion from './ProgramAccordion'
 
 export default function PriceSection() {
-  const [filter, setFilter] = useState<'all' | 'home' | 'class' | 'yard'>('all')
+  const [filter, setFilter] = useState<'all' | 'home' | 'class' | 'yard'>('home')
 
   // Мемоизируем обработчик для предотвращения лишних ререндеров
   const handleFilterChange = useCallback((newFilter: typeof filter) => {
